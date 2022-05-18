@@ -1,0 +1,63 @@
+{
+    "count":"4",
+    "monsters": [
+        {
+            "name":"monster1",
+            "baseHP":"10",
+            "hpDie":"6",
+            "baseAcr":"5",
+            "acrIncr":"0.34",
+            "baseDef":"5",
+            "defIncr":"0.25",
+            "abilities":[
+                {"name":"scream","effect":"daze","sides":"4"},
+                {"name":"bite","effect":"none","sides":"6"}
+            ],
+            "imgPath":"resources/monster1.png"
+        },
+        {
+            "name":"Litch",
+            "baseHP":"5",
+            "hpDie":"4",
+            "baseAcr":"10",
+            "acrIncr":"0.5",
+            "baseDef":"7",
+            "defIncr":"0.25",
+            "abilities":[
+                {"name":"poison spell","effect":"poison","sides":"4"},
+                {"name":"confuse","effect":"daze","sides":"0"},
+                {"name":"bolt","effect":"none","sides":"10"},
+                {"name":"regenerate","effect":"heal","sides":"-10"}
+            ],
+            "imgPath":"resources/litch.png"
+        },
+        {
+            "name":"cobra",
+            "baseHP":"5",
+            "hpDie":"4",
+            "baseAcr":"10",
+            "acrIncr":"0.5",
+            "baseDef":"10",
+            "defIncr":"0.5",
+            "abilities":[
+                {"name":"evade","effect":"boost-defence","sides":"4"},
+                {"name":"bite","effect":"poison","sides":"6"}
+            ],
+            "imgPath":"resources/litch.png"
+        },
+        {
+            "name":"slimeblock",
+            "baseHP":"10",
+            "hpDie":"10",
+            "baseAcr":"2",
+            "acrIncr":"0.25",
+            "baseDef":"5",
+            "defIncr":"0.5",
+            "abilities":[
+                {"name":"spit acid","effect":"poison","sides":"6"},
+                {"name":"regenerate","effect":"heal","sides":"-10"}
+            ],
+            "imgPath":"resources/litch.png"
+        }
+    ]
+}
