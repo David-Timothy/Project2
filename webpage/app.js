@@ -2,39 +2,27 @@ var myApp = angular.module("battle", []);
 
 myApp.controller("battleController", function($scope) {
 
-    $scope.coins = 0;
+    $scope.coins = 10;
     $scope.difficulty = 0;
 
     function createPlayer() {
 
     $scope.player = new player(100, 10, 10);
-
-    $scope.player.addSkill("Kick", "daze", 4, 1);
-    $scope.player.addSkill("Evade", "boost-defence", 0, 1);
-    $scope.player.addSkill("Give up", "heal", 1000, 0);
-
-    $scope.player.addSpell("Firebolt", "burn", 8, 2);
-    $scope.player.addSpell("Freeze", "slow", 6, 2);
-    $scope.player.addSpell("Confuse", "daze", 0, 1);
-
-    $scope.player.addItem("Sword", "none", 6, -1);
-    $scope.player.addItem("Bomb", "none", 12, 5);
-    $scope.player.addItem("Health Potion", "heal", -10, 5);
+        $scope.player.addSkill("Kick", "daze", 4, 0);
+        $scope.player.addSkill("Give up", "heal", 1000, 0);
 
     }
 
     function createMonster() {
 
-        $scope.monster = new monster("Monster 1", 10+die($scope.difficulty*6), "resources/monster1.png");
-        console.log($scope.monster.imagePath);
+        $scope.monster = new monster("Monster 1", 10+multiDie($scope.difficulty, 6), "resources/monster1.png",$scope.difficulty);
 
-        $scope.monster.addAbility("Bite", "none", 6+$scope.difficulty);
+        $scope.monster.addAbility("Bite", "none", 6);
         $scope.monster.addAbility("Scream", "daze", 4);
         $scope.monster.accuracy += Math.floor($scope.difficulty/2);
         $scope.monster.accuracyMax += Math.floor($scope.difficulty/2);
         $scope.monster.defence += Math.floor($scope.difficulty/4);
         $scope.monster.defenceMax += Math.floor($scope.difficulty/4);
-        $scope.monster.coinReward = $scope.difficulty;
     }
 
     $scope.showStock = function(item) {
@@ -42,8 +30,8 @@ myApp.controller("battleController", function($scope) {
     }
 
     monsterAction = function() {
+        $scope.player.turn();
         $scope.monster.turn();
-        console.log($scope.monster.statusEffects);
         var action = $scope.monster.abilities[die($scope.monster.abilities.length)-1];
         if(action.effect != "boost")
             if(willHit($scope.monster, $scope.player)) {
@@ -54,12 +42,10 @@ myApp.controller("battleController", function($scope) {
         else {
             action.preform($scope.monster);
         }
-
-        $scope.player.turn();
         if($scope.player.hp <= 0) lose();
     }
 
-        $scope.doAction = function(action) {
+    $scope.doAction = function(action) {
             if(action.canCast($scope.player)) {
                 if(action.effect != "boost-defence" && action.effect != "heal")
                     if(willHit($scope.player, $scope.monster)) {
@@ -115,6 +101,26 @@ myApp.controller("battleController", function($scope) {
             $scope.toShop();
         }
 
+        $scope.shop = new shop($scope.player);
+        $scope.shop.addSkill("Evade", "boost-defence", 0, 1, 1);
+
+        $scope.shop.addSpell("Firebolt", "burn", 8, 2, 2);
+        $scope.shop.addSpell("Freeze", "slow", 6, 2, 1);
+        $scope.shop.addSpell("Confuse", "daze", 0, 1, 2);
+
+        $scope.shop.addItem("Sword", "none", 6, -1, 2);
+        $scope.shop.addItem("Bomb", "none", 12, 0, 4);
+        $scope.shop.addItem("Health Potion", "heal", -10, 0, 1);
+
+        $scope.purchaseItems = function() {
+            if($scope.shop.totalCost() <= $scope.coins) {
+                $scope.coins -= $scope.shop.totalCost();
+                $scope.shop.purchase($scope.player);
+                $scope.toSelection();
+            } else {
+                alert("Not enough coins");
+            }
+        }
 
 });
 class actor {
@@ -134,13 +140,13 @@ class actor {
         this.accuracy = this.accuracyMax;
         var done = [];
         for (let i = 0; i < this.statusEffects.length; i++) {
-            if(done.indexOf(this.statusEffects[i]) == -1) {
+            if(done.indexOf(this.statusEffects[i]) == -1 && this.statusEffects[i] != null) {
               done.push(this.statusEffects[i]);
-              switch (this.statusEffects[i]) {
-                case "burn" : this.hp -= 3; break;
-                case "slow" : this.defence -= 4; break;
-                case "daze" : this.defence -= 2; this.accuracy -= 2; break;
-                case "boost-defence" : this.defence += 2;
+              switch (this.statusEffects[i].effect) {
+                case "burn" : this.hp -= this.statusEffects[i].level; break;
+                case "slow" : this.defence -= this.statusEffects[i].level; break;
+                case "daze" : this.defence -= this.statusEffects[i].level; this.accuracy -= this.statusEffects[i].level; break;
+                case "boost-defence" : this.defence += this.statusEffects[i].level;
                 case null : break;
                 case "none" : break;
                 default : break;
@@ -151,16 +157,25 @@ class actor {
     }
 }
 
+class statusEffect {
+    constructor(effect, level) {
+        this.level = level;
+        this.effect = effect;
+    }
+}
+
 class monster extends actor {
-    constructor(name, hp, image) {
+    constructor(name, hp, image, coinReward) {
         super(name, hp, 5, 5);
         this.imagePath = image;
         this.abilities = [];
-        this.coinReward = 1;
+        this.coinReward = coinReward;
     }
 
     addAbility(name, effect, sides) {
-        this.abilities.push(new action(name, effect, sides));
+        var monsterAction = new action(name, effect, sides);
+        monsterAction.level = this.coinReward;
+        this.abilities.push(monsterAction);
     }
 }
 
@@ -188,6 +203,35 @@ class player extends actor {
         addItem(name, effect, sides, stock) {
             this.inventory.push(new item(name, effect, sides, this, stock));
         }
+
+        addShopSkill(shopItem) {
+            shopItem.storedAction.level = shopItem.buying;
+            this.skills.push(shopItem.storedAction);
+        }
+
+        addShopSpell(shopItem) {;
+            shopItem.storedAction.level = shopItem.buying;
+            this.spells.push(shopItem.storedAction);
+        }
+
+        addShopItem(shopItem) {
+            if(shopItem.storedAction.stock > -1)
+                shopItem.storedAction.stock = shopItem.buying;
+            else
+                shopItem.storedAction.level = shopItem.buying;
+            this.inventory.push(shopItem.storedAction);
+        }
+
+        addFromShop(shopItem) {
+            if(shopItem.buying > 0){
+                if(shopItem.storedAction.source=="item")
+                    this.addShopItem(shopItem);
+                if(shopItem.storedAction.source=="mana")
+                    this.addShopSpell(shopItem);
+                if(shopItem.storedAction.source=="energy")
+                    this.addShopSkill(shopItem);
+            }
+        }
 }
 
 class action {
@@ -195,11 +239,12 @@ class action {
         this.name = name;
         this.effect = effect;
         this.sides = sides;
+        this.level = 1;
     }
 
     preform(target) {
-        target.hp = target.hp - die(this.sides);
-        target.statusEffects.push(this.effect);
+        target.hp = target.hp - multiDie(this.level, this.sides);
+        target.statusEffects.push(new statusEffect(this.effect, this.level));
         if(target.hp < 0) target.hp = 0;
         if(target.hp > target.hpMax) target.hp = target.hpMax;
     }
@@ -252,6 +297,60 @@ class item extends playerAction {
     }
 }
 
+class shopItem {
+    constructor(storedAction, coinCost){
+        this.buying = 0;
+        this.storedAction = storedAction;
+        this.coinCost = coinCost;
+    }
+
+    totalCost() {
+        return this.buying*this.coinCost;
+    }
+}
+
+class shop {
+    constructor(thisPlayer) {
+        this.items = [];
+        this.thisPlayer = thisPlayer;
+    }
+
+    addSkill(name, effect, sides, cost, coinCost) {
+        this.items.push(new shopItem(
+            new playerAction(name, effect, sides, "energy", cost, this.thisPlayer),
+            coinCost)
+        );
+    }
+
+    addSpell(name, effect, sides, cost, coinCost) {
+        this.items.push(new shopItem(
+            new playerAction(name, effect, sides, "mana", cost, this.thisPlayer),
+            coinCost)
+        );
+    }
+
+    addItem(name, effect, sides, stock, coinCost) {
+        this.items.push(new shopItem(
+            new item(name, effect, sides, this.thisPlayer, stock),
+            coinCost)
+        );
+    }
+
+    purchase(player) {
+        for(var i = 0; i < this.items.length; i++) {
+            player.addFromShop(this.items[i]);
+        }
+    }
+
+    totalCost() {
+        var cost = 0;
+        for(var i = 0; i < this.items.length; i++) {
+            cost += this.items[i].totalCost();
+        }
+        return cost;
+    }
+}
+
 function willHit(castor, target) {
     return die(castor.accuracy) >= die(target.defence);
 }
@@ -262,7 +361,9 @@ function die(sides) {
 
 function multiDie(die, sides) {
     var result = 0;
-    while(die > 0)
+    while(die > 0) {
         result += Math.ceil(Math.random()*sides);
+        die--;
+        }
     return result;
 }
