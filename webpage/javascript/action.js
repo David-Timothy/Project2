@@ -10,10 +10,14 @@ export class action {
     }
 
     preform(target) {
+        var dmg = multiDie(this.level, this.sides);
         target.hp = target.hp - multiDie(this.level, this.sides);
-        target.statusEffects.push(new statusEffect(this.effect, this.level));
+        var effect = new statusEffect(this.effect, this.level);
+        target.statusEffects.push(effect);
         if(target.hp < 0) target.hp = 0;
         if(target.hp > target.hpMax) target.hp = target.hpMax;
+
+        return target.name+" hp : "+(-dmg)+"\n"+target.name+" gains status effect : "+effect.effect;
     }
 }
 
@@ -30,7 +34,7 @@ export class playerAction extends action {
             this.player.mana = this.player.mana-this.cost;
         if(this.source == "energy")
             this.player.energy = this.player.energy-this.cost;
-        super.preform(target);
+        return super.preform(target);
     }
 
     canCast(castor) {
@@ -54,9 +58,9 @@ export class item extends playerAction {
     }
 
     preform(target) {
-        super.preform(target);
         if(this.stock > 0)
             this.stock = this.stock-1;
+        return super.preform(target);
     }
 
     canCast(castor) {

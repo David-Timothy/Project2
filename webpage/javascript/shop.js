@@ -16,6 +16,9 @@ export class shop {
     constructor(thisPlayer) {
         this.items = [];
         this.thisPlayer = thisPlayer;
+        this.hpBoost = 0;
+        this.accuracyBoost = 0;
+        this.defenceBoost = 0;
     }
 
     addSkill(name, effect, sides, cost, coinCost) {
@@ -43,6 +46,9 @@ export class shop {
         for(var i = 0; i < this.items.length; i++) {
             player.addFromShop(this.items[i]);
         }
+        player.setHealth(player.hp+this.hpBoost);
+        player.setAccuracy(player.accuracy+this.accuracyBoost);
+        player.setDefence(player.defence+this.defenceBoost);
     }
 
     totalCost() {
@@ -50,6 +56,9 @@ export class shop {
         for(var i = 0; i < this.items.length; i++) {
             cost += this.items[i].totalCost();
         }
+        cost += this.hpBoost/10;
+        cost += this.accuracyBoost;
+        cost += this.defenceBoost;
         return cost;
     }
 }

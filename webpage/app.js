@@ -6,12 +6,13 @@ import {player, monster} from "/webpage/javascript/actor.js";
 import {statusEffect} from "/webpage/javascript/statusEffect.js";
 import {pickMonster} from '/webpage/javascript/genMonster.js';
 myApp.controller("battleController", function($scope) {
+
     $scope.coins = 10;
     $scope.difficulty = 0;
 
     function createPlayer() {
 
-    $scope.player = new player(100, 10, 10);
+        $scope.player = new player(100, 10, 10);
         $scope.player.addSkill("Kick", "daze", 4, 0);
         $scope.player.addSkill("Give up", "heal", 1000, 0);
 
@@ -19,14 +20,7 @@ myApp.controller("battleController", function($scope) {
 
     function createMonster() {
 
-        $scope.monster = new monster("Monster 1", 10+multiDie($scope.difficulty, 6), "resources/monster1.png",$scope.difficulty);
-
-        $scope.monster.addAbility("Bite", "none", 6);
-        $scope.monster.addAbility("Scream", "daze", 4);
-        $scope.monster.accuracy += Math.floor($scope.difficulty/2);
-        $scope.monster.accuracyMax += Math.floor($scope.difficulty/2);
-        $scope.monster.defence += Math.floor($scope.difficulty/4);
-        $scope.monster.defenceMax += Math.floor($scope.difficulty/4);
+        $scope.monster = pickMonster($scope.difficulty);
     }
 
     $scope.showStock = function(item) {
@@ -35,26 +29,26 @@ myApp.controller("battleController", function($scope) {
 
     var monsterAction = function() {
         $scope.player.turn();
-        $scope.monster.turn();
         var action = $scope.monster.abilities[die($scope.monster.abilities.length)-1];
-        if(action.effect != "boost")
+        if(action.effect != "boost-defence+" && action.effect != "heal") {
             if(willHit($scope.monster, $scope.player)) {
-                action.preform($scope.player)
-                alert($scope.monster.name + " uses "+action.name);
+                
+                alert($scope.monster.name + " uses "+action.name+"\n"+action.preform($scope.player));
             } else
                 alert($scope.monster.name + " uses "+action.name+" and mises");
-        else {
-            action.preform($scope.monster);
+        } else {
+            
+            alert($scope.monster.name + " uses "+action.name+"\n"+action.preform($scope.monster));
         }
         if($scope.player.hp <= 0) lose();
+        $scope.monster.turn();
     }
 
     $scope.doAction = function(action) {
             if(action.canCast($scope.player)) {
                 if(action.effect != "boost-defence" && action.effect != "heal")
                     if(willHit($scope.player, $scope.monster)) {
-                        action.preform($scope.monster)
-                        alert("Hit")
+                        alert(action.preform($scope.monster))
                     } else
                         alert("Miss")
                 else {
@@ -79,6 +73,10 @@ myApp.controller("battleController", function($scope) {
         }
         $scope.toSelection = function() {
             $scope.difficulty++;
+            for(const item of $scope.player.inventory) {
+                if(item.stock > 0)
+                    item.level = $scope.difficulty
+            }
             createMonster();
             $scope.state = "selection";
         }
@@ -113,7 +111,7 @@ myApp.controller("battleController", function($scope) {
         $scope.shop.addSpell("Confuse", "daze", 0, 1, 2);
 
         $scope.shop.addItem("Sword", "none", 6, -1, 2);
-        $scope.shop.addItem("Bomb", "none", 12, 0, 4);
+        $scope.shop.addItem("Bomb", "none", 10, 0, 4);
         $scope.shop.addItem("Health Potion", "heal", -10, 0, 1);
 
         $scope.purchaseItems = function() {

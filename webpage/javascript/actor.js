@@ -3,12 +3,9 @@ import {action, playerAction, item} from "/webpage/javascript/action.js";
 class actor {
     constructor(name, hp, accuracy, defence){
         this.name = name;
-        this.hp = hp;
-        this.hpMax = hp;
-        this.accuracy = accuracy;
-        this.accuracyMax = accuracy;
-        this.defence = defence;
-        this.defenceMax = defence;
+        this.setHealth(hp);
+        this.setAccuracy(accuracy);
+        this.setDefence(defence);
         this.statusEffects = [];
     }
 
@@ -17,26 +14,42 @@ class actor {
         this.accuracy = this.accuracyMax;
         var done = [];
         for (let i = 0; i < this.statusEffects.length; i++) {
-            if(done.indexOf(this.statusEffects[i]) == -1 && this.statusEffects[i] != null) {
-              done.push(this.statusEffects[i]);
-              switch (this.statusEffects[i].effect) {
+            if(done.indexOf(this.statusEffects[i].effect) == -1 && this.statusEffects[i] != null) {
+                done.push(this.statusEffects[i].effect);
+                switch (this.statusEffects[i].effect) {
                 case "burn" : this.hp -= this.statusEffects[i].level; break;
+                case "poison" : this.hp -= this.statusEffects[i].level; break;
                 case "slow" : this.defence -= this.statusEffects[i].level; break;
                 case "daze" : this.defence -= this.statusEffects[i].level; this.accuracy -= this.statusEffects[i].level; break;
-                case "boost-defence" : this.defence += this.statusEffects[i].level;
+                case "boost-defence" : this.defence += this.statusEffects[i].level; break;
+                case "heal" : this.statusEffects.splice(i, 1); break;
                 case null : break;
-                case "none" : break;
+                case "none" : this.statusEffects.splice(i, 1); break;
                 default : break;
               }
+            } else {
+                this.statusEffects.splice(i, 1);
             }
-          if(Math.random() < 0.2) this.statusEffects[i] = null;
+          if(Math.random() < 0.2) this.statusEffects.splice(i, 1);
         }
+    }
+    setHealth(hp){
+        this.hp = hp;
+        this.hpMax = hp;
+    }
+    setAccuracy(acc){
+        this.accuracy = acc;
+        this.accuracyMax = acc;
+    }
+    setDefence(def){
+        this.defence = def;
+        this.defenceMax = def;
     }
 }
 
 export class monster extends actor {
-    constructor(name, hp, image, coinReward) {
-        super(name, hp, 5, 5);
+    constructor(name, hp, accuracy, defence, image, coinReward) {
+        super(name, hp, accuracy, defence);
         this.imagePath = image;
         this.abilities = [];
         this.coinReward = coinReward;

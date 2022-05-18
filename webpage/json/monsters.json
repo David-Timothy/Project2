@@ -27,7 +27,7 @@
                 {"name":"poison spell","effect":"poison","sides":"4"},
                 {"name":"confuse","effect":"daze","sides":"0"},
                 {"name":"bolt","effect":"none","sides":"10"},
-                {"name":"regenerate","effect":"heal","sides":"-10"}
+                {"name":"regenerate","effect":"heal","sides":"-6"}
             ],
             "imgPath":"resources/litch.png"
         },
@@ -43,21 +43,21 @@
                 {"name":"evade","effect":"boost-defence","sides":"4"},
                 {"name":"bite","effect":"poison","sides":"6"}
             ],
-            "imgPath":"resources/litch.png"
+            "imgPath":"resources/cobra.png"
         },
         {
             "name":"slimeblock",
             "baseHP":"10",
             "hpDie":"10",
-            "baseAcr":"2",
+            "baseAcr":"4",
             "acrIncr":"0.25",
             "baseDef":"5",
             "defIncr":"0.5",
             "abilities":[
                 {"name":"spit acid","effect":"poison","sides":"6"},
-                {"name":"regenerate","effect":"heal","sides":"-10"}
+                {"name":"regenerate","effect":"heal","sides":"-6"}
             ],
-            "imgPath":"resources/litch.png"
+            "imgPath":"resources/slimeblock.png"
         }
     ]
 }
