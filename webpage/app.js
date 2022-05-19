@@ -28,9 +28,8 @@ myApp.controller("battleController", function($scope) {
     }
 
     var monsterAction = function() {
-        $scope.player.turn();
         var action = $scope.monster.abilities[die($scope.monster.abilities.length)-1];
-        if(action.effect != "boost-defence+" && action.effect != "heal") {
+        if(action.effect != "boost-defence" && action.effect != "heal") {
             if(willHit($scope.monster, $scope.player)) {
                 
                 alert($scope.monster.name + " uses "+action.name+"\n"+action.preform($scope.player));
@@ -41,6 +40,7 @@ myApp.controller("battleController", function($scope) {
             alert($scope.monster.name + " uses "+action.name+"\n"+action.preform($scope.monster));
         }
         if($scope.player.hp <= 0) lose();
+        $scope.player.turn();
         $scope.monster.turn();
     }
 
