@@ -11,13 +11,11 @@ export class action {
 
     preform(target) {
         var dmg = multiDie(this.level, this.sides);
-        target.hp = target.hp - multiDie(this.level, this.sides);
-        var effect = new statusEffect(this.effect, this.level);
-        target.statusEffects.push(effect);
+        target.hp = target.hp - dmg;
         if(target.hp < 0) target.hp = 0;
         if(target.hp > target.hpMax) target.hp = target.hpMax;
 
-        return target.name+" hp : "+(-dmg)+"\n"+target.name+" gains status effect : "+effect.effect;
+        return target.name+" hp : "+(-dmg)+"\n"+target.addEffect(this.effect, this.level);
     }
 }
 

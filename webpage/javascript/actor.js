@@ -1,4 +1,5 @@
 import {action, playerAction, item} from "/webpage/javascript/action.js";
+import {statusEffect} from "/webpage/javascript/statusEffect.js";
 
 class actor {
     constructor(name, hp, accuracy, defence){
@@ -7,30 +8,44 @@ class actor {
         this.setAccuracy(accuracy);
         this.setDefence(defence);
         this.statusEffects = [];
+        this.immunities = [];
+    }
+
+    addEffect(effect, level){
+        for(const immunity of this.immunities) {
+            if(immunity == effect)
+                return this.name+" is immune to "+immunity;
+        }
+        if(effect != "none") {
+            var affected = false;
+            for(const statEffect of this.statusEffects){
+                if(statEffect.effect == effect){
+                    statEffect.level+=level;
+                    affected = true
+
+                }
+            }
+            if(!affected)
+                this.statusEffects.push(new statusEffect(effect, level));
+            return this.name + " received : "+ effect+"-"+level;
+        }
+        if(effect == "none"){
+            return "";
+        }
+    }
+
+    removeEffect(effect) {
+        this.statusEffects.splice(this.statusEffects.indexOf(effect), 1);
     }
 
     turn() {
         this.defence = this.defenceMax;
         this.accuracy = this.accuracyMax;
-        var done = [];
         for (let i = 0; i < this.statusEffects.length; i++) {
-            if(done.indexOf(this.statusEffects[i].effect) == -1 && this.statusEffects[i] != null) {
-                done.push(this.statusEffects[i].effect);
-                switch (this.statusEffects[i].effect) {
-                case "burn" : this.hp -= this.statusEffects[i].level; break;
-                case "poison" : this.hp -= this.statusEffects[i].level; break;
-                case "slow" : this.defence -= this.statusEffects[i].level; break;
-                case "daze" : this.defence -= this.statusEffects[i].level; this.accuracy -= this.statusEffects[i].level; break;
-                case "boost-defence" : this.defence += this.statusEffects[i].level; break;
-                case "heal" : this.statusEffects.splice(i, 1); break;
-                case null : break;
-                case "none" : this.statusEffects.splice(i, 1); break;
-                default : break;
-              }
-            } else {
-                this.statusEffects.splice(i, 1);
-            }
-          if(Math.random() < 0.2) this.statusEffects.splice(i, 1);
+            var effect = this.statusEffects[i];
+            effect.enact(this);
+            effect.level--;
+            if(effect.level == 0) this.removeEffect(effect);
         }
     }
     setHealth(hp){
@@ -57,7 +72,7 @@ export class monster extends actor {
 
     addAbility(name, effect, sides) {
         var monsterAction = new action(name, effect, sides);
-        monsterAction.level = this.coinReward;
+        monsterAction.level = Math.ceil(this.coinReward*0.5);
         this.abilities.push(monsterAction);
     }
 }

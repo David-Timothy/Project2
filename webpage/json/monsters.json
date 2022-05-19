@@ -68,8 +68,8 @@
             "baseDef":"4",
             "defIncr":"0.33",
             "abilities":[
-                {"name":"Smash","effect":"poison","sides":"6"},
-                {"name":"Scream","effect":"daze","sides":"0s"}
+                {"name":"Smash","effect":"none","sides":"6"},
+                {"name":"Scream","effect":"daze","sides":"0"}
             ],
             "imgPath":"resources/Cyclops.png"
         },
