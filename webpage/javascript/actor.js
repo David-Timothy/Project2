@@ -81,13 +81,21 @@ export class player extends actor {
 
         constructor(hp, mana, energy) {
             super("You", hp, 10, 10);
-            this.mana = mana;
-            this.manaMax = mana;
-            this.energy = energy;
-            this.energyMax = energy;
+            this.setMana(mana);
+            this.setEnergy(energy);
             this.skills = [];
             this.spells = [];
             this.inventory = [];
+        }
+
+        setMana(mana) {
+            this.mana = mana;
+            this.manaMax = mana;
+        }
+
+        setEnergy(energy) {
+            this.energy = energy;
+            this.energyMax = energy;
         }
 
         addSkill(name, effect, sides, cost) {

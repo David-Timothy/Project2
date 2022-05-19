@@ -110,7 +110,7 @@ myApp.controller("battleController", function($scope) {
         $scope.shop.addSpell("Freeze", "slow", 6, 2, 1);
         $scope.shop.addSpell("Confuse", "daze", 0, 1, 2);
 
-        $scope.shop.addItem("Sword", "none", 6, -1, 2);
+        $scope.shop.addItem("Sword", "none", 6, -1, 4);
         $scope.shop.addItem("Bomb", "none", 10, 0, 4);
         $scope.shop.addItem("Health Potion", "heal", -10, 0, 1);
 

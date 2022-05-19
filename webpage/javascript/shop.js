@@ -19,6 +19,8 @@ export class shop {
         this.hpBoost = 0;
         this.accuracyBoost = 0;
         this.defenceBoost = 0;
+        this.manaBoost = 0;
+        this.energyBoost = 0;
     }
 
     addSkill(name, effect, sides, cost, coinCost) {
@@ -49,6 +51,8 @@ export class shop {
         player.setHealth(player.hp+this.hpBoost);
         player.setAccuracy(player.accuracy+this.accuracyBoost);
         player.setDefence(player.defence+this.defenceBoost);
+        player.setMana(player.mana+this.manaBoost);
+        player.setEnergy(player.energy+this.energyBoost);
     }
 
     totalCost() {
@@ -59,6 +63,8 @@ export class shop {
         cost += this.hpBoost/10;
         cost += this.accuracyBoost;
         cost += this.defenceBoost;
+        cost += this.manaBoost;
+        cost += this.energyBoost;
         return cost;
     }
 }
