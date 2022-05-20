@@ -3,7 +3,7 @@ package com.revature.service;
 import com.revature.data.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.revature.entity.Character;
 import java.util.List;
 
 @Service
@@ -15,10 +15,11 @@ public class CharacterService {
         characterRepository.save(character);
         return character;
     }
-    public List<Character> getAllCharacterByAccountId(Long accountId) {
-        return characterRepository.getAllCharactersByAccountId(accountId);
+    public List<Character> getAllCharacterByAccountId(Long account_id) {
+        return characterRepository.getAllCharactersByAccountId(account_id);
     }
-    public void deleteCharacterById(Long accountId, Long characterId) {
-        characterRepository.deleteCharacterByAccountIdAndCharacterId(accountId, characterId);
+    public void deleteCharacterById(Long id) {
+//        characterRepository.deleteCharacterByAccountIdAndCharacterId(id);
+        characterRepository.deleteById(id);
     }
 }
