@@ -1,23 +1,24 @@
 package com.revature.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 
-
+@Data
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@Data
 @Entity
+@Table(name = "account")
 public class Account {
-
     @Id
     @GeneratedValue
     private Long id;
-
     private String username;
     private String password;
     private String email;
@@ -34,5 +35,14 @@ public class Account {
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
+
+    }
+    //Constructor with no id
+    public Account(String username, String password, String email, String account_type, Timestamp created_at) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.account_type = account_type;
+        this.created_at = created_at;
     }
 }
