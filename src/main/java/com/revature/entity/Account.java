@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -23,6 +24,8 @@ public class Account {
     private String password;
     private String email;
     private String account_type;
+    @Column(name = "created_at")
+    @CreationTimestamp
     private Timestamp created_at;
 
     //set up our one to many relationship one cart has many book
@@ -44,5 +47,11 @@ public class Account {
         this.email = email;
         this.account_type = account_type;
         this.created_at = created_at;
+    }
+    public Account(String username, String password, String email, String account_type) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.account_type = account_type;
     }
 }
