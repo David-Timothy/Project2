@@ -3,21 +3,23 @@ package com.revature.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
+import lombok.ToString;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import org.hibernate.annotations.CreationTimestamp;
+import javax.persistence.Column;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Data
 @Entity
 public class Character {
+
     @Id
-    // auto-generate ids (like serial in psql)
     @GeneratedValue
     private Long id;
     private Long account_id;
