@@ -1,3 +1,15 @@
-<p *ngIf="!inBattle">not in battle</p>
+<div *ngIf="!inBattle">
+    <div class="row" style="text-align: center;">
+        <!--<img class="col" src={{monster.imagePath}} style="height: 15em; width:50em" alt="resources/monster1.png"/>-->
+        <div class="col">
+            <h4>{{monster.name}}</h4>
+            <h5>Health : {{monster.hp}}/{{monster.hpMax}}</h5>
+            <h5>Coin Reward : {{monster.coinReward}}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <button class="col" (click)="acceptBattle()">Fight</button>
+        <button class="col" (click)="selectMonster()">Next</button>
+    </div>
+</div>
 <p *ngIf="inBattle">in battle</p>
-<button (click)="acceptBattle()">acceptBattle</button>

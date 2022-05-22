@@ -1,17 +1,13 @@
 import {monster} from "./actor";
 import {die, multiDie} from "./die";
+import * as getMonsters from "../json/monsters.json";
 
 export function pickMonster(difficulty:number) {
     var coins = difficulty;
-    difficulty = Math.ceil(difficulty*0.66)
-    var request = new XMLHttpRequest();
-    var generatedMonster = null;
-
-    request.open('GET', 'json/monsters.json', false);
-
-    request.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            var monsters = JSON.parse(this.responseText);
+    difficulty = Math.ceil(difficulty*0.66);
+    
+    var generatedMonster = new monster("none", 10, 10, 10, "resources/monster1.png", 1);
+            var monsters = JSON.parse(JSON.stringify(getMonsters));
             var index = die(monsters.count)-1;
             var selected = monsters.monsters[index];
             generatedMonster = 
@@ -25,12 +21,6 @@ export function pickMonster(difficulty:number) {
             for(const ability of selected.abilities) {
                 generatedMonster.addAbility(ability.name, ability.effect, ability.sides);
             }
-        }
-        else {
-            console.log("Loading");
-        }
-    }
-    request.send();
     return generatedMonster;
 }
 
