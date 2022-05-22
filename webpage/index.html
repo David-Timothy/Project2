@@ -87,19 +87,19 @@
             <div class="col-sm-6">{{item.storedAction.name}}</div>
             <div class="col-sm-2">{{item.totalCost()}}</div>
             <input type="number"
-                   ng-model="item.buying" class="col-sm-2">
+                   ng-model="item.buying" class="col-sm-2" min="0">
         </div>
         <div class="row">
             <label class="col-sm-1" for="HP">HP Boost: </label>
-            <input class="col-sm-1" name="HP" type="number" ng-model="shop.hpBoost" step="10">
+            <input class="col-sm-1" name="HP" type="number" ng-model="shop.hpBoost" step="10" min="-90">
             <label class="col-sm-1" for="accuracy">Accuracy Boost: </label>
-            <input class="col-sm-1" name="accuracy" type="number" ng-model="shop.accuracyBoost">
+            <input class="col-sm-1" name="accuracy" type="number" ng-model="shop.accuracyBoost" min="-9">
             <label class="col-sm-1" for="defence">Defence Boost: </label>
-            <input class="col-sm-1" name="defence" type="number" ng-model="shop.defenceBoost">
+            <input class="col-sm-1" name="defence" type="number" ng-model="shop.defenceBoost" min="-9">
             <label class="col-sm-1" for="mana">Mana Boost: </label>
-            <input class="col-sm-1" name="mana" type="number" ng-model="shop.manaBoost">
+            <input class="col-sm-1" name="mana" type="number" ng-model="shop.manaBoost" min="-10">
             <label class="col-sm-1" for="energy">Energy Boost: </label>
-            <input class="col-sm-1" name="energy" type="number" ng-model="shop.energyBoost">
+            <input class="col-sm-1" name="energy" type="number" ng-model="shop.energyBoost" min="-10">
         </div>
         <h3>{{shop.totalCost()}}</h3>
         <button ng-click="purchaseItems()">Start</button>
