@@ -2,7 +2,7 @@
         <h1>Store</h1>
         <h2>Coins : {{getCoins()}}</h2>
         <div class="row" *ngFor="let item of items">
-            <div class="col-sm-6">{{item.name}}</div>
+            <div class="col-sm-6">{{item.storedAction.name}}</div>
             <div class="col-sm-2">{{item.totalCost()}}</div>
             <input type="number"
             [(ngModel)]="item.buying" class="col-sm-2" min="0">

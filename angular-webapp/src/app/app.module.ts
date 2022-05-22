@@ -19,6 +19,6 @@ import { BattleComponent } from './battle/battle.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent, ShopComponent]
+  bootstrap: [AppComponent, ShopComponent, BattleComponent]
 })
 export class AppModule { }

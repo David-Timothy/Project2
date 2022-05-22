@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {pickMonster} from '../scriptFiles/genMonster.js';
 
 @Component({
   selector: 'app-battle',
