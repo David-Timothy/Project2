@@ -84,8 +84,8 @@ export class monster extends actor {
         this.coinReward = coinReward;
     }
 
-    addAbility(name:string, effect:string, sides:number) {
-        var monsterAction = new action(name, effect, sides);
+    addAbility(name:string, effect:string, sides:number, selfTargeted:boolean) {
+        var monsterAction = new action(name, effect, sides, selfTargeted);
         monsterAction.level = Math.ceil(this.coinReward*0.5);
         this.abilities.push(monsterAction);
     }
@@ -119,16 +119,16 @@ export class player extends actor {
             this.energyMax = energy;
         }
 
-        addSkill(name:string, effect:string, sides:number, cost:number) {
-            this.skills.push(new playerAction(name, effect, sides, "energy", cost, this));
+        addSkill(name:string, effect:string, sides:number, cost:number, selfTargeted:boolean) {
+            this.skills.push(new playerAction(name, effect, sides, "energy", cost, this, selfTargeted));
         }
 
-        addSpell(name:string, effect:string, sides:number, cost:number) {
-           this.spells.push(new playerAction(name, effect, sides, "mana", cost, this));
+        addSpell(name:string, effect:string, sides:number, cost:number, selfTargeted:boolean) {
+           this.spells.push(new playerAction(name, effect, sides, "mana", cost, this, selfTargeted));
         }
 
-        addItem(name:string, effect:string, sides:number, stock:number) {
-            this.inventory.push(new item(name, effect, sides, this, stock));
+        addItem(name:string, effect:string, sides:number, stock:number, selfTargeted:boolean) {
+            this.inventory.push(new item(name, effect, sides, this, stock, selfTargeted));
         }
 
         addShopSkill(shopItem:shopItem) {

@@ -35,23 +35,23 @@ export class shop {
         this.energyBoost = 0;
     }
 
-    addSkill(name:string, effect:string, sides:number, cost:number, coinCost:number) {
+    addSkill(name:string, effect:string, sides:number, cost:number, coinCost:number, selfTargeted:boolean) {
         this.items.push(new shopItem(
-            new playerAction(name, effect, sides, "energy", cost, this.thisPlayer),
+            new playerAction(name, effect, sides, "energy", cost, this.thisPlayer, selfTargeted),
             coinCost)
         );
     }
 
-    addSpell(name:string, effect:string, sides:number, cost:number, coinCost:number) {
+    addSpell(name:string, effect:string, sides:number, cost:number, coinCost:number, selfTargeted:boolean) {
         this.items.push(new shopItem(
-            new playerAction(name, effect, sides, "mana", cost, this.thisPlayer),
+            new playerAction(name, effect, sides, "mana", cost, this.thisPlayer, selfTargeted),
             coinCost)
         );
     }
 
-    addItem(name:string, effect:string, sides:number, stock:number, coinCost:number) {
+    addItem(name:string, effect:string, sides:number, stock:number, coinCost:number, selfTargeted:boolean) {
         this.items.push(new shopItem(
-            new item(name, effect, sides, this.thisPlayer, stock),
+            new item(name, effect, sides, this.thisPlayer, stock, selfTargeted),
             coinCost)
         );
     }

@@ -19,7 +19,7 @@ export function pickMonster(difficulty:number) {
                     coins
                     );
             for(const ability of selected.abilities) {
-                generatedMonster.addAbility(ability.name, ability.effect, ability.sides);
+                generatedMonster.addAbility(ability.name, ability.effect, ability.sides, ability.selfTargeted);
             }
     return generatedMonster;
 }

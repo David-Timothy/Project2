@@ -7,10 +7,12 @@ export class action {
     effect: string;
     sides: number;
     level: number;
-    constructor(name: String, effect: string, sides: number) {
+    selfTargeted: boolean;
+    constructor(name: String, effect: string, sides: number, selfTargeted:boolean) {
         this.name = name;
         this.effect = effect;
         this.sides = sides;
+        this.selfTargeted = selfTargeted;
         this.level = 1;
     }
 
@@ -28,14 +30,14 @@ export class playerAction extends action {
     source: string;
     cost: number;
     player: player;
-    constructor(name:string, effect:string, sides:number, source:string, cost:number, player:player) {
-        super(name, effect, sides);
+    constructor(name:string, effect:string, sides:number, source:string, cost:number, player:player, selfTargeted:boolean) {
+        super(name, effect, sides, selfTargeted);
         this.source = source;
         this.cost = cost;
         this.player = player;
     }
 
-    override preform(target: actor) {
+    override preform(target:actor) {
         if(this.source == "mana")
             this.player.mana = this.player.mana-this.cost;
         if(this.source == "energy")
@@ -60,8 +62,8 @@ export class playerAction extends action {
 
 export class item extends playerAction {
     stock: number;
-    constructor(name:string, effect:string, sides:number, player:player, stock:number) {
-        super(name, effect, sides, "item", 0, player);
+    constructor(name:string, effect:string, sides:number, player:player, stock:number, selfTargeted:boolean) {
+        super(name, effect, sides, "item", 0, player, selfTargeted);
         this.stock = stock;
     }
 
