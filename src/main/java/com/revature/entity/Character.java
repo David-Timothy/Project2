@@ -35,4 +35,9 @@ public class Character {
         this.coins = coins;
         this.created_at = created_at;
     }
+    public Character(Long account_id, String name, int coins) {
+        this.account_id = account_id;
+        this.name = name;
+        this.coins = coins;
+    }
 }
