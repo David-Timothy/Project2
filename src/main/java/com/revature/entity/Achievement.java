@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +18,10 @@ public class Achievement {
     private Long char_id;
     private String name;
     private String description;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="OWNER_ID")
+    private Character character;
+
     public Achievement(Long char_id, String name, String description) {
         this.char_id = char_id;
         this.name = name;

@@ -22,7 +22,5 @@ public class Request {
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp created_at;
-
-
 }
 
