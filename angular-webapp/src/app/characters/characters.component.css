@@ -1,0 +1,22 @@
+.title {
+  margin: 45px 0;
+}
+.card {
+  border: none;
+  padding: 0;
+  height: 250px;
+  width: 360px;
+}
+.button-wrapper > button {
+  margin: auto;
+  margin-left: 0;
+}
+
+.button-wrapper {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.achievement-wrapper{
+  height: 90px;
+}
