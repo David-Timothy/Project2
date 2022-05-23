@@ -22,6 +22,7 @@ public class CharacterController {
     public List<Character> getAllCharacterByAccountId(@PathVariable("account_id") Long account_id) {
         return characterService.getAllCharacterByAccountId(account_id);
     }
+
     @DeleteMapping("/{id}")
     public void deleteCharacter(@PathVariable("id") Long id) {
         characterService.deleteCharacterById(id);
