@@ -37,13 +37,13 @@ export class BattleComponent implements OnInit {
   }
 
   win(){
-    alert("win");
+    alert("Defated "+monster.name);
     this.inBattle = false;
     this.selectMonster();
   }
 
   lose(){
-    alert("lose");
+    alert("You fainted");
     this.inBattle = false;
   }
 
