@@ -22,6 +22,6 @@ import { BattleComponent } from './battle/battle.component';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent, /*ShopComponent,*/ BattleComponent]
+  bootstrap: [AppComponent, ShopComponent, BattleComponent]
 })
 export class AppModule { }

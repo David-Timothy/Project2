@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { action, playerAction } from '../scriptFiles/action';
 import { actor, monster, player } from '../scriptFiles/actor';
 import { die } from '../scriptFiles/die';
@@ -15,7 +16,7 @@ export class BattleComponent implements OnInit {
   monster!:monster;
   player:player;
 
-  constructor() {
+  constructor(private router:Router) {
     this.selectMonster();
     this.player = new player(100,10,10);
     this.getPlayerSkills(this.player);
@@ -44,7 +45,7 @@ export class BattleComponent implements OnInit {
 
   lose(){
     alert("You fainted");
-    this.inBattle = false;
+    this.router.navigate(['/shop']);
   }
 
   getPlayerSkills(player:player) {
