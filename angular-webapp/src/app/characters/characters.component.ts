@@ -19,7 +19,7 @@ export class CharactersComponent implements OnInit {
       this.characters = characters
     })
   }
-  showAchievement(index: number) {
+  setAchievement(index: number) {
     this.achievements = this.characters[index].achievements;
   }
 }

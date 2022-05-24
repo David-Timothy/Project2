@@ -22,4 +22,7 @@ public class CharacterService {
 //        characterRepository.deleteCharacterByAccountIdAndCharacterId(id);
         characterRepository.deleteById(id);
     }
+    public int setCoinsByCharacter(Character character) {
+         return characterRepository.setCoinsByCharacter(character.getCoins(), character.getId());
+    }
 }

@@ -7,18 +7,26 @@
   height: 250px;
   width: 360px;
 }
+.achievement-wrapper{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 .button-wrapper > button {
   margin: auto;
   margin-left: 0;
 }
-
+.row {
+  display: flex;
+  justify-content: center;
+}
 .button-wrapper {
   padding: 0;
   display: flex;
   align-items: center;
 }
-button:hover{
-  transform:scale(1.2);
+.card:hover{
+  transform:scale(1.1);
   transition: 0.3s all;
 }
 .achievement-wrapper{
