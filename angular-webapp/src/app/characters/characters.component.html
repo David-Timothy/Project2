@@ -2,36 +2,18 @@
   <h1 class="display-5 fw-bold title">Characters</h1>
   <div class="container">
     <div class="row">
-      <div class="card col-4" style="width: 18rem;">
+      <div class="card col-4 character" style="width: 18rem;" *ngFor="let character of characters">
         <div class="card-body">
-          <h5 class="card-title">character'name</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Coins: </h6>
+          <h5 class="card-title">{{character.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{character.coins}}</h6>
           <div class="achievement-wrapper">
-            <h6 class="card-subtitle">Achievement: </h6>
-            <div>Killed a monster</div>
+            <h6 class="card-subtitle"></h6>
+            <div *ngFor="let achievement of character.achievements">{{achievement.description}}</div>
           </div>
           <div class="container button-wrapper">
             <button type="button" class="btn btn-primary btn-sm">Choose</button>
             <button type="button" class="btn btn-danger btn-sm">Delete</button>
           </div>
-        </div>
-      </div>
-      <div class="card col-4" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
-      <div class="card col-4" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
         </div>
       </div>
   </div>
