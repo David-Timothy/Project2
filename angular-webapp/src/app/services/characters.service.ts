@@ -10,7 +10,7 @@ export class CharactersService {
   constructor(private http:HttpClient) { }
 
   getAllCharacters(id:number) {
-    return this.http.get<Character[]>("http://localhost:9001/characters/"+id)
+    return this.http.get<Character[]>(`http://localhost:9001/characters/${id}`)
   }
 
   setCharacter(selected:Character){

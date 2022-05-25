@@ -23,20 +23,24 @@ export class CharactersComponent implements OnInit {
       account_id: 1,
       name:""
     }
+    console.log(1)
   }
 
   getAllCharacters() {
     this.charactersService.getAllCharacters(1).subscribe((characters: Character[]) => {
       this.characters = characters
+      console.log(this.characters)
     })
   }
   selectCharacter(selected:Character){
+    console.log(selected)
     this.charactersService.setCharacter(selected);
     this.router.navigate(['/shop']);
   }
 
 
-  setAchievement(index: number) {
+  setAchievement(index: number, e:Event) {
+    e.stopPropagation();
     this.achievements = this.characters[index].achievements;
     this.isDisplayAchievement = !this.isDisplayAchievement;
     console.log(this.achievements)
@@ -45,7 +49,6 @@ export class CharactersComponent implements OnInit {
     this.isDisplayAchievement = value
   }
   addCharacter() {
-    console.log(this.character)
     this.charactersService.addCharacter(this.character).subscribe(character => {
       console.log(character.id)
       this.getAllCharacters();

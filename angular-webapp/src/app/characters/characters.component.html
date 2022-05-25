@@ -14,11 +14,11 @@
     <div class="container-sm">
       <div class="row">
         <div class="card col-4 character" style="width: 18rem;" *ngFor="let character of characters; let i = index">
-          <div class="card-body">
+          <div class="card-body" (click)="selectCharacter(character)">
             <h5 class="card-title">{{character.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Coins: {{character.coins}}</h6>
             <div class="container button-wrapper">
-              <button type="button" (click) = "setAchievement(i)" class="btn btn-light btn-sm">Achievement</button>
+              <button type="button" (click) = "setAchievement(i, $event)" class="btn btn-light btn-sm">Achievement</button>
               <button type="button" (click)="deleteCharacter(character.id)" class="btn btn-outline-danger btn-sm">Delete</button>
             </div>
           </div>
