@@ -1,6 +1,6 @@
 package com.revature.controller;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import com.revature.entity.Account;
 import com.revature.entity.Character;
 import com.revature.service.AdminService;
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
+@CrossOrigin(origins="*")
 @RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
     AdminService adminService;
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Account login(@RequestBody Account admin) {
         return adminService.login(admin);
     }

@@ -1,0 +1,85 @@
+<div *ngIf="!inBattle">
+    <div class="row" style="text-align: center;">
+        <img class="col" src={{monster.imagePath}} style="height: 15em; width:50em" alt="resources/monster1.png"/>
+        <div class="col">
+            <h4>{{monster.name}}</h4>
+            <h5>Health : {{monster.hp}}/{{monster.hpMax}}</h5>
+            <h5>Coin Reward : {{monster.coinReward}}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <button class="col" (click)="acceptBattle()">Fight</button>
+        <button class="col" (click)="selectMonster()">Next</button>
+    </div>
+</div>
+<div *ngIf="inBattle">
+    <div class="row" style="text-align: center;">
+        <h1>Battle</h1>
+    </div>
+    <div class="row" style="text-align: center;">
+        <img class="col" src={{monster.imagePath}} style="height: 15em; width:50em"/>
+        <div class="col">
+            <h4>{{monster.name}}</h4>
+            <h5>Health : {{monster.hp}}/{{monster.hpMax}}</h5>
+            <p>Accuracy : {{monster.accuracy}}/{{monster.accuracyMax}}</p>
+            <p>Defence : {{monster.defence}}/{{monster.defenceMax}}</p>
+            <div class="row" *ngFor="let effect of monster.statusEffects">
+                <p>{{effect.effect}}-{{effect.level}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3 class="items">Items</h3>
+            <div class="itemList">
+                <div class="row" *ngFor="let item of player.inventory">
+                    <p class="col-sm-6">{{item.name}}</p>
+                    <div class="col-sm-2">
+                        <p *ngIf="item.stock > 0">{{item.stock}}</p>
+                    </div>
+                    <button class="col-sm-3" (click)="doAction(item)">Use</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h3 class="spells">Spells</h3>
+            <div class="spellList">
+                <div class="row" *ngFor="let spell of player.spells">
+                    <span class="col-sm-1"></span>
+                    <p class="col-sm-7">{{spell.name}}</p>
+                    <button class="col-sm-3" (click)="doAction(spell)">Use</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h3 class="skills">Skills</h3>
+            <div class="skillList">
+                <div class="row" *ngFor="let skill of player.skills">
+                    <span class="col-sm-1"></span>
+                    <p class="col-sm-7">{{skill.name}}</p>
+                    <button class="col-sm-3" (click)="doAction(skill)">Use</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row hp">
+                <h4>HP:{{player.hp}}/{{player.hpMax}}</h4>
+            </div>
+            <div class="row mana">
+                Mana:{{player.mana}}/{{player.manaMax}}
+            </div>
+            <div class="row energy">
+                Energy:{{player.energy}}/{{player.energyMax}}
+            </div>
+            <div class="row accuracy">
+                Accuracy:{{player.accuracy}}/{{player.accuracyMax}}
+            </div>
+            <div class="row defense">
+                Defense:{{player.defence}}/{{player.defenceMax}}
+            </div>
+            <div class="row" *ngFor="let effect of player.statusEffects">
+                <p>{{effect.effect}}-{{effect.level}}</p>
+            </div>
+        </div>
+    </div>
+</div>
