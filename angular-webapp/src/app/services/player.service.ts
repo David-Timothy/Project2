@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Character } from '../character';
 import { player } from '../scriptFiles/actor';
 import { run } from '../scriptFiles/run';
 import { shopItem } from '../scriptFiles/shop';
@@ -9,6 +10,7 @@ import { CharactersService } from './characters.service';
 })
 export class PlayerService {
   player:player;
+  char!:Character;
 
   constructor(private charactersService:CharactersService) { 
     this.player = this.getPlayer();
@@ -25,8 +27,15 @@ export class PlayerService {
       this.player.name = ""+character.name;
       this.player.coins = character.coins.valueOf();
       this.player.progress = run.progress;
+      this.char = character;
     }
     return this.player;
+  }
+
+  changeCoins(change:number){
+    this.char.coins = this.char.coins.valueOf()+change;
+    this.getPlayer().coins = this.char.coins.valueOf();
+    this.charactersService.updateCoins(this.char).subscribe(()=>{});
   }
 
   addFromShop(item:shopItem){
@@ -36,6 +45,15 @@ export class PlayerService {
   getRun(){
     return new runImpl()
   }
+
+  changeMax(hp: number, mana: number, energy: number, accuracy: number, defence: number){
+    var p = this.player;
+    this.player.setHealth(p.hp+hp);
+    this.player.setMana(p.mana+mana);
+    this.player.setEnergy(p.energy+energy);
+    this.player.setAccuracy(p.accuracy+accuracy);
+    this.player.setDefence(p.defence+defence);
+  }
 }
 
 class runImpl implements run{
@@ -43,9 +61,9 @@ class runImpl implements run{
   char_id: number = 1;
   mana: number = 10;
   energy: number = 10;
-  health: number = 10;
+  health: number = 100;
   manamax: number = 10;
   energymax: number = 10;
-  healthmax: number = 10;
+  healthmax: number = 100;
   progress: number =1;
 }

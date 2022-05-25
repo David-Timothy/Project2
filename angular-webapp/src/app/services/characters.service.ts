@@ -20,4 +20,8 @@ export class CharactersService {
   getCharacter() {
     return this.currentChar;
   }
+
+  updateCoins(char:Character) {
+    return this.http.put<Character>("http://localhost:9001/characters", char)
+  }
 }

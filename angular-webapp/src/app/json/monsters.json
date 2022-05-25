@@ -13,7 +13,7 @@
                 {"name":"scream","effect":"daze","sides":"4", "selfTargeted":false},
                 {"name":"bite","effect":"none","sides":"6", "selfTargeted":false}
             ],
-            "imgPath":"/resources/monster1.png"
+            "imgPath":"/assets/monster1.png"
         },
         {
             "name":"Litch",

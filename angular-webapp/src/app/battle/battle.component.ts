@@ -41,7 +41,7 @@ export class BattleComponent implements OnInit {
   win(){
     alert("Defated "+monster.name);
     this.inBattle = false;
-    this.player.coins += this.difficulty;
+    this.playerService.changeCoins(this.difficulty);
     this.selectMonster();
   }
 
