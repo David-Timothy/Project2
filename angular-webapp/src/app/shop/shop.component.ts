@@ -13,6 +13,7 @@ export class ShopComponent extends shop implements OnInit{
 
   constructor(private router:Router, private playerService:PlayerService) {
     super(playerService.getPlayer());
+    playerService.reset();
   }
 
   ngOnInit(): void {

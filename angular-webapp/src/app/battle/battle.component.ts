@@ -20,7 +20,6 @@ export class BattleComponent implements OnInit {
   constructor(private router:Router, private playerService:PlayerService) {
     this.selectMonster();
     this.player = this.playerService.getPlayer();
-    this.getPlayerSkills(this.player);
    }
 
   ngOnInit(): void {

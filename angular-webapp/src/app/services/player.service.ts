@@ -28,8 +28,20 @@ export class PlayerService {
       this.player.coins = character.coins.valueOf();
       this.player.progress = run.progress;
       this.char = character;
+      this.player.addSkill("Kick", "daze", 4, 1, false);
+      this.player.addSkill("Give up", "none", 1000, 0, true);
     }
     return this.player;
+  }
+
+  reset() {
+    var initRun = new runImpl();
+    this.player.setHealth(initRun.healthmax);
+    this.player.setMana(initRun.manamax);
+    this.player.setEnergy(initRun.energymax);
+    this.player.setAccuracy(10);
+    this.player.setDefence(10);
+    this.player.statusEffects = [];
   }
 
   changeCoins(change:number){
