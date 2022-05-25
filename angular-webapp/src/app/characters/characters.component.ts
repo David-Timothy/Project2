@@ -23,13 +23,13 @@ export class CharactersComponent implements OnInit {
       this.characters = characters
     })
   }
-
   selectCharacter(selected:Character){
     this.charactersService.setCharacter(selected);
     this.router.navigate(['/shop']);
   }
 
-  showAchievement(index: number) {
+
+  setAchievement(index: number) {
     this.achievements = this.characters[index].achievements;
   }
 }

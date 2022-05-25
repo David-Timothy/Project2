@@ -28,4 +28,10 @@ public class CharacterController {
     public void deleteCharacter(@PathVariable("id") Long id) {
         characterService.deleteCharacterById(id);
     }
+
+    @PutMapping("")
+    public int setCoinsByCharacter(@RequestBody Character character) {
+        return characterService.setCoinsByCharacter(character);
+    }
+
 }
