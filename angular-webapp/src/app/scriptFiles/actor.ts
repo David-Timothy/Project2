@@ -92,6 +92,7 @@ export class monster extends actor {
 }
 
 export class player extends actor {
+        progress: number;
         mana!: number;
         manaMax!: number;
         energy!: number;
@@ -99,6 +100,7 @@ export class player extends actor {
         inventory: item[];
         skills: playerAction[];
         spells: playerAction[];
+        coins!: number;
 
         constructor(hp:number, mana:number, energy:number) {
             super("You", hp, 10, 10);
@@ -107,6 +109,7 @@ export class player extends actor {
             this.skills = [];
             this.spells = [];
             this.inventory = [];
+            this.progress = 1;
         }
 
         setMana(mana:number) {
@@ -142,7 +145,7 @@ export class player extends actor {
         }
 
         addShopItem(shopItem:shopItem) {
-            if((shopItem.storedAction as item).stock > 0)
+            if((shopItem.storedAction as item).stock >= 0)
                 (shopItem.storedAction as item).stock = shopItem.buying;
             else
                 shopItem.storedAction.level = shopItem.buying;

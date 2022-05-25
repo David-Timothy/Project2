@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { player } from '../scriptFiles/actor';
 import {shop} from '../scriptFiles/shop'
 import { Router } from '@angular/router';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-shop',
@@ -10,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ShopComponent extends shop implements OnInit{
 
-  constructor(private router:Router) {
-    super(new player(100, 10, 10));
+  constructor(private router:Router, private playerService:PlayerService) {
+    super(playerService.getPlayer());
   }
 
   ngOnInit(): void {
@@ -27,13 +28,17 @@ export class ShopComponent extends shop implements OnInit{
   }
 
   getCoins(): number {
-    return 10;
+    return this.playerService.getPlayer().coins;
   }
 
   purchaseItems(): void {
-    if(this.totalCost() <= this.getCoins())
+    if(this.totalCost() <= this.getCoins()) {
+      for(let item of this.items){
+        this.playerService.addFromShop(item);
+      }
+      this.playerService.getPlayer().coins -= this.totalCost();
       this.router.navigate(['/battle']);
-    else
+    } else
       console.log("not enough coins");
   }
 

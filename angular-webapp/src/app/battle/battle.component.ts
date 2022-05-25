@@ -4,6 +4,7 @@ import { action, playerAction } from '../scriptFiles/action';
 import { actor, monster, player } from '../scriptFiles/actor';
 import { die } from '../scriptFiles/die';
 import {pickMonster} from '../scriptFiles/genMonster';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-battle',
@@ -16,9 +17,9 @@ export class BattleComponent implements OnInit {
   monster!:monster;
   player:player;
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private playerService:PlayerService) {
     this.selectMonster();
-    this.player = new player(100,10,10);
+    this.player = this.playerService.getPlayer();
     this.getPlayerSkills(this.player);
    }
 
@@ -40,6 +41,7 @@ export class BattleComponent implements OnInit {
   win(){
     alert("Defated "+monster.name);
     this.inBattle = false;
+    this.player.coins += this.difficulty;
     this.selectMonster();
   }
 
@@ -51,10 +53,6 @@ export class BattleComponent implements OnInit {
   getPlayerSkills(player:player) {
     player.addSkill("Kick", "daze", 4, 1, false);
     player.addSkill("Give up", "none", 1000, 0, true);
-
-    player.addSpell("Fireball", "burn", 8, 2, false);
-
-    player.addItem("Sword", "none", 6, -1, false);
   }
 
   doAction(action:playerAction) {

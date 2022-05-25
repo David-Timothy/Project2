@@ -11,7 +11,7 @@
             <div *ngFor="let achievement of character.achievements">{{achievement.description}}</div>
           </div>
           <div class="container button-wrapper">
-            <button type="button" class="btn btn-primary btn-sm">Choose</button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="selectCharacter(character)">Choose</button>
             <button type="button" class="btn btn-danger btn-sm">Delete</button>
           </div>
         </div>

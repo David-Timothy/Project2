@@ -5,18 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';W
-import { ShopComponent } from './shop/shop.component';
+import { AppComponent } from './app.component';
 import { BattleComponent } from './battle/battle.component';
 import { CharactersComponent } from './characters/characters.component';
-import {HttpClientModule} from '@angular/common/http';
 import { AchievementsComponent } from './characters/achievements/achievements.component';
+import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShopComponent,
-    BattleComponent
+    BattleComponent,
     CharactersComponent,
     AchievementsComponent
   ],
@@ -27,6 +26,6 @@ import { AchievementsComponent } from './characters/achievements/achievements.co
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent, ShopComponent, BattleComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
