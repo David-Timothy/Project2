@@ -12,8 +12,14 @@ export class CharactersComponent implements OnInit {
   characters!:Character[]
   achievements!:Achievement[]
   isDisplayAchievement:boolean = false;
+  isDisplayInput:boolean = false;
+  character!:Partial<Character>
   ngOnInit(): void {
     this.getAllCharacters()
+    this.character = {
+      account_id: 1,
+      name:""
+    }
   }
   getAllCharacters() {
     this.charactersService.getAllCharacters().subscribe((characters: Character[]) => {
@@ -27,5 +33,18 @@ export class CharactersComponent implements OnInit {
   }
   setDisplay(value: boolean) {
     this.isDisplayAchievement = value
+  }
+  addCharacter() {
+    console.log(this.character)
+    this.charactersService.addCharacter(this.character).subscribe(character => {
+      console.log(character.id)
+      this.getAllCharacters();
+    })
+  }
+  deleteCharacter(id:Number) {
+    console.log(id)
+    this.charactersService.deleteCharacter(id).subscribe(() => {
+      this.getAllCharacters();
+    })
   }
 }

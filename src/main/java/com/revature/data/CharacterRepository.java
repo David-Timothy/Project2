@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface CharacterRepository extends JpaRepository<Character, Long> {
-    @Query(value = "SELECT * FROM character as c left join account as a on c.account_id = a.id WHERE account_id = ?1 ", nativeQuery = true)
+    @Query(value = "SELECT * FROM character as c left join account as a on c.account_id = a.id WHERE account_id = ?1 ORDER BY c.id ", nativeQuery = true)
     public List<Character> getAllCharactersByAccountId(Long account_id);
 
     @Query(value = "DELETE FROM character WHERE id = ?1", nativeQuery = true)

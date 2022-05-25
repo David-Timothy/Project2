@@ -8,8 +8,6 @@
 .card {
   border: none;
   padding: 0;
-  height: 250px;
-  width: 360px;
 }
 .achievement-wrapper{
   text-overflow: ellipsis;
@@ -34,5 +32,18 @@
   transition: 0.3s all;
 }
 .achievement-wrapper{
-  height: 90px;
+  height: 80px;
+}
+.button-wrapper{
+  margin-top: 20px;
+}
+.add-character-btn{
+  margin-bottom: 20px;
+}
+.add-character-container {
+  display:flex;
+  justify-content: flex-start;
+}
+.add-character-container label {
+  margin-left:12px;
 }
