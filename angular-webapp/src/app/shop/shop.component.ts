@@ -35,8 +35,8 @@ export class ShopComponent extends shop implements OnInit{
     if(this.totalCost() <= this.getCoins()) {
       for(let item of this.items){
         this.playerService.addFromShop(item);
-        this.playerService.changeMax(this.hpBoost, this.manaBoost, this.energyBoost, this.accuracyBoost, this.defenceBoost);
       }
+      this.playerService.changeMax(this.hpBoost, this.manaBoost, this.energyBoost, this.accuracyBoost, this.defenceBoost);
       this.playerService.changeCoins(-this.totalCost());
       this.router.navigate(['/battle']);
     } else
