@@ -1,4 +1,9 @@
-
-<div class="container">
-  achievement!
+<div class="background" [ngStyle]="{'display': isDisplay ? 'block' : 'none'}" (click)="setDisplay()">
+  <div id="container" >
+    <div class="container wrapper">
+      <div *ngFor="let achievement of achievements">
+        {{achievement.name}}: {{achievement.description}}
+      </div>
+    </div>
+  </div>
 </div>

@@ -11,6 +11,7 @@ export class CharactersComponent implements OnInit {
   constructor(private charactersService: CharactersService) { }
   characters!:Character[]
   achievements!:Achievement[]
+  isDisplayAchievement:boolean = false;
   ngOnInit(): void {
     this.getAllCharacters()
   }
@@ -21,5 +22,10 @@ export class CharactersComponent implements OnInit {
   }
   setAchievement(index: number) {
     this.achievements = this.characters[index].achievements;
+    this.isDisplayAchievement = !this.isDisplayAchievement;
+    console.log(this.achievements)
+  }
+  setDisplay(value: boolean) {
+    this.isDisplayAchievement = value
   }
 }
