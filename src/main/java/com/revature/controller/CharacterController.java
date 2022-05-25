@@ -7,7 +7,6 @@ import com.revature.entity.Character;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/characters")
 public class CharacterController {
@@ -33,5 +32,4 @@ public class CharacterController {
     public int setCoinsByCharacter(@RequestBody Character character) {
         return characterService.setCoinsByCharacter(character);
     }
-
 }

@@ -10,6 +10,14 @@ import { BattleComponent } from './battle/battle.component';
 import { CharactersComponent } from './characters/characters.component';
 import { AchievementsComponent } from './characters/achievements/achievements.component';
 import { ShopComponent } from './shop/shop.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { UpdateUsernamePasswordComponent } from './update-username-password/update-username-password.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +26,13 @@ import { ShopComponent } from './shop/shop.component';
     BattleComponent,
     CharactersComponent,
     AchievementsComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    StatisticsComponent,
+    UpdateUsernamePasswordComponent,
+    AdminLoginComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +41,7 @@ import { ShopComponent } from './shop/shop.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, /*ShopComponent,*/ BattleComponent]
 })
+
 export class AppModule { }

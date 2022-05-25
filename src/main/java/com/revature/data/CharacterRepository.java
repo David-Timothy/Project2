@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.revature.entity.Character;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.util.List;
 
 @Repository
@@ -21,4 +22,5 @@ public interface CharacterRepository extends JpaRepository<Character, Long> {
     @Modifying
     @Query(value = "UPDATE character SET coins = ?1 WHERE id =?2", nativeQuery = true)
     public int setCoinsByCharacter(int coins,Long id);
+
 }
