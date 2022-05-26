@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins="*")
@@ -25,6 +26,11 @@ public class AdminController {
     @GetMapping("/allchar")
     public List<Character> allCharacter() {
         return adminService.allCharacter();
+    }
+
+    @GetMapping("/char/{id}")
+    public Character getCharacterById(@PathVariable("id") Long id) {
+        return adminService.getCharacterById(id);
     }
 
     @DeleteMapping("/char/{id}")

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService {
@@ -24,6 +25,8 @@ public class AdminService {
     public List<Character> allCharacter() {
         return adminCharacterRepository.allCharacter();
     }
+
+    public Character getCharacterById(Long id) {return adminCharacterRepository.findById(id).get();}
 
     public void deleteCharacter(Long id) {
         adminCharacterRepository.deleteById(id);

@@ -15,7 +15,19 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { UpdateUsernamePasswordComponent } from './update-username-password/update-username-password.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminManageComponent } from './admin-manage/admin-manage.component';
 
+const routes: Routes = [
+  {path: 'home', component: HomeComponent},
+  {path: 'battle', component: BattleComponent},
+  {path: 'statistics', component: StatisticsComponent},
+  {path: 'shop', component: ShopComponent},
+  {path: 'update-username-password', component: UpdateUsernamePasswordComponent},
+  {path: '', component: LoginComponent},
+  {path: 'admin', component: AdminLoginComponent},
+  {path: 'adminhome', component:AdminHomeComponent},
+  {path: 'character/:id', component:AdminManageComponent}
+];
 
 @NgModule({
   declarations: [
@@ -28,13 +40,15 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     StatisticsComponent,
     UpdateUsernamePasswordComponent,
     AdminLoginComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    AdminManageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent, /*ShopComponent,*/ BattleComponent]

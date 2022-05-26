@@ -10,7 +10,7 @@ import { Character } from '../entity/character';
 })
 export class AdminHomeComponent implements OnInit {
 
-  character!:Character[];
+  characters!:Character[];
   constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class AdminHomeComponent implements OnInit {
 
   getAllCharacter() {
     this.adminService.getAllCharacter().subscribe(
-      (char:)
+      (char:Character[]) => {this.characters = char} 
     )
   }
 
