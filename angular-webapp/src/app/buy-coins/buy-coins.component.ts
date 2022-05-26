@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { CharactersService } from '../services/characters.service';
 import { Request } from '../request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buy-coins',
@@ -12,7 +13,7 @@ export class BuyCoinsComponent implements OnInit {
   request!: Partial<Request>;
   charId!: Number;
 
-  constructor(private requestService:RequestService, private charService:CharactersService) { }
+  constructor(private requestService:RequestService, private charService:CharactersService, private router:Router) { }
 
   ngOnInit(): void {
     this.charId = this.charService.getCharacter().id;
@@ -30,6 +31,10 @@ export class BuyCoinsComponent implements OnInit {
        alert(`Your purchase of ${request.amount} of coins is pending`)
       }
      )
+  }
+
+  backToTheShop(){
+    this.router.navigate(['/shop']);
   }
 
 }
