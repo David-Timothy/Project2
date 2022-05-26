@@ -4,6 +4,7 @@ import {shop} from '../scriptFiles/shop'
 import { Router } from '@angular/router';
 import { PlayerService } from '../services/player.service';
 import * as getAbilities from "../json/abilities.json";
+import { AuthenticationService } from '../service/authentication/authentication.service';
 
 @Component({
   selector: 'app-shop',
@@ -12,7 +13,8 @@ import * as getAbilities from "../json/abilities.json";
 })
 export class ShopComponent extends shop implements OnInit{
 
-  constructor(private router:Router, private playerService:PlayerService) {
+  constructor(private router:Router, private playerService:PlayerService,
+    public authenticationService:AuthenticationService) {
     super(playerService.getPlayer());
     playerService.reset();
   }
@@ -52,5 +54,8 @@ export class ShopComponent extends shop implements OnInit{
   toBuy(){
     this.router.navigate(['/buy']);
   }
-
+  
+  logout() {
+    this.authenticationService.logout();
+  }
 }

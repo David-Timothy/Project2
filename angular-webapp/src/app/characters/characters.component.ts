@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Achievement } from '../achievement';
 import { Character } from '../character';
 import { CharactersService } from '../services/characters.service';
+import { AuthenticationService } from '../service/authentication/authentication.service';
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
@@ -15,7 +16,8 @@ export class CharactersComponent implements OnInit {
   isDisplayInput:boolean = false;
   character!:Partial<Character>
 
-  constructor(private charactersService: CharactersService, private router:Router) { }
+  constructor(private charactersService: CharactersService, private router:Router,
+    public authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
     this.getAllCharacters()
@@ -59,5 +61,8 @@ export class CharactersComponent implements OnInit {
     this.charactersService.deleteCharacter(id).subscribe(() => {
       this.getAllCharacters();
     })
+  }
+  logout() {
+    this.authenticationService.logout();
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { Character } from '../entity/character';
-
+import { AuthenticationService } from '../service/authentication/authentication.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -11,7 +11,8 @@ import { Character } from '../entity/character';
 export class AdminHomeComponent implements OnInit {
 
   characters!:Character[];
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService,
+    public authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
     this.getAllCharacter();
@@ -22,5 +23,7 @@ export class AdminHomeComponent implements OnInit {
       (char:Character[]) => {this.characters = char} 
     )
   }
-
+  logout() {
+    this.authenticationService.logout();
+  }
 }
