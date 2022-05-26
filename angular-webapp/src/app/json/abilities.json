@@ -11,7 +11,7 @@
         {"name":"Evade","effect":"boost-defence","sides":"0","cost":"2","coinCost":"1","selfTargeted":"true"},
         {"name":"Focus","effect":"boost-accuracy","sides":"0","cost":"2","coinCost":"1","selfTargeted":"true"},
         {"name":"Empower","effect":"boost","sides":"0","cost":"2","coinCost":"2","selfTargeted":"true"},
-        {"name":"recover","effect":"heal","sides":"-4","cost":"1","coinCost":"1","selfTargeted":"true"},
+        {"name":"recover","effect":"heal","sides":"-8","cost":"1","coinCost":"1","selfTargeted":"true"},
         {"name":"Smash","effect":"daze","sides":"8","cost":"1","coinCost":"2","selfTargeted":"false"}
     ],
     "items":[
