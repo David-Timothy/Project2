@@ -10,6 +10,8 @@ import java.util.List;
 public interface RequestRepository extends JpaRepository<Request, Integer> {
 
     public List<Request> findByStatusIs(String status);
+    //
+    public List<Request> findByCharIdIs(Long id);
 
 }
 

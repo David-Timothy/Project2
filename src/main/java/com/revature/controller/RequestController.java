@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// we can access this from anywhere, if we don't have this, we will be blocked by CORS:
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/requests")
 public class RequestController {
@@ -20,6 +22,11 @@ public class RequestController {
     public Request buyCoins(@RequestBody Request request) {
         request.setStatus("pending");
         return requestService.addRequest(request);
+    }
+
+    @GetMapping("/{charId}")
+    public List<Request> getAllRequests(@PathVariable("charId") Long charId) {
+        return requestService.findByCharIdIs(charId);
     }
 
     //past purchases
@@ -44,9 +51,8 @@ public class RequestController {
     }
 
 
-    @GetMapping("/admin/{status}")
-    public List<Request> getRequestsByStatus(@PathVariable("status") String status) {
-        System.out.println(status);
+    @GetMapping("/admin/status")
+    public List<Request> getRequestsByStatus(@RequestParam String status) {
         return requestService.findByStatus(status);
     }
 

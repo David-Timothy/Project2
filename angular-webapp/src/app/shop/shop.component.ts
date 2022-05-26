@@ -49,4 +49,8 @@ export class ShopComponent extends shop implements OnInit{
       console.log("not enough coins");
   }
 
+  toBuy(){
+    this.router.navigate(['/buy']);
+  }
+
 }

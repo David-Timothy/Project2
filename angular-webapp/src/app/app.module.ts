@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,18 @@ import { BattleComponent } from './battle/battle.component';
 import { CharactersComponent } from './characters/characters.component';
 import { AchievementsComponent } from './characters/achievements/achievements.component';
 import { ShopComponent } from './shop/shop.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { UpdateUsernamePasswordComponent } from './update-username-password/update-username-password.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminAssignCoinsComponent } from './admin-assign-coins/admin-assign-coins.component';
+import { AdminHandleRequestComponent } from './admin-handle-request/admin-handle-request.component';
+import { RequestsComponent } from './requests/requests.component';
+import { BuyCoinsComponent } from './buy-coins/buy-coins.component';
+
 
 @NgModule({
   declarations: [
@@ -17,15 +29,27 @@ import { ShopComponent } from './shop/shop.component';
     ShopComponent,
     BattleComponent,
     CharactersComponent,
-    AchievementsComponent
+    AchievementsComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    StatisticsComponent,
+    UpdateUsernamePasswordComponent,
+    AdminLoginComponent,
+    AdminHomeComponent,
+    AdminAssignCoinsComponent,
+    AdminHandleRequestComponent,
+    RequestsComponent,
+    BuyCoinsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, /*ShopComponent, BattleComponent*/]
 })
+
 export class AppModule { }

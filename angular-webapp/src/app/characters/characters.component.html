@@ -1,22 +1,28 @@
-<div class="container-sm">
-  <h1 class="display-5 fw-bold title">Characters</h1>
+<div class="background">
+  <app-achievements [achievements] ="achievements" [isDisplay] = "isDisplayAchievement" (displayEvent)="setDisplay($event)"></app-achievements>
   <div class="container-sm">
-    <div class="row">
-      <div class="card col-4 character" style="width: 18rem;" *ngFor="let character of characters; let i = index">
-        <div class="card-body">
-          <h5 class="card-title">{{character.name}} + index: {{i}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{character.coins}}</h6>
-          <div class="achievement-wrapper">
-            <h6 class="card-subtitle"></h6>
-            <div *ngFor="let achievement of character.achievements;">{{achievement.description}}</div>
-          </div>
-          <div class="container button-wrapper">
-            <button type="button" class="btn btn-primary btn-sm" (click)="selectCharacter(character)">Choose</button>
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+    <h1 class="display-5 fw-bold title">Characters</h1>
+    <div class="add-character-container">
+      <button type="button" (click)="addCharacter()" class="btn btn-outline-primary btn-sm add-character-btn">Add Character</button>
+      <div>
+        <label for="character-name">Name:</label>
+        <input type="text" id="character-name" [(ngModel)]="character.name" />
+        <button (click)="addCharacter()" class="btn btn-light btn-sm">submit</button>
+      </div>
+    </div>
+    
+    <div class="container-sm">
+      <div class="row">
+        <div class="card col-4 character" style="width: 18rem;" *ngFor="let character of characters; let i = index">
+          <div class="card-body" (click)="selectCharacter(character)">
+            <h5 class="card-title">{{character.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Coins: {{character.coins}}</h6>
+            <div class="container button-wrapper">
+              <button type="button" (click) = "setAchievement(i, $event)" class="btn btn-light btn-sm">Achievement</button>
+              <button type="button" (click)="deleteCharacter(character.id)" class="btn btn-outline-danger btn-sm">Delete</button>
+            </div>
           </div>
         </div>
-      </div>
+    </div>
   </div>
 </div>
-</div>
-<app-achievements [achievement] ="achievements"></app-achievements>

@@ -1,0 +1,24 @@
+<h1> View All Characters </h1>
+
+<table>
+    <thead>
+        <th>id</th>
+        <th>acount_id</th>
+        <th>name</th>
+        <th>coins</th>
+        <th>created_at</th>
+    </thead>
+
+    <tbody>
+        <!-- for each book in our books array, we are mapping it to whatever html code that we write here -->
+        <!-- router link allow us to click which will redirecting it to specific book -->
+        <tr class="character" *ngFor="let char of characters">
+            <td>{{char.id}}</td>
+            <td>{{char.account_id}}</td>
+            <td>{{char.name}}</td>
+            <td>{{char.coins}}</td>
+            <td>{{char.created_at}}</td>
+        </tr>
+
+    </tbody>
+</table>

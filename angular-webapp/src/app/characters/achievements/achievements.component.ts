@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Achievement } from 'src/app/achievement';
 
 @Component({
@@ -7,11 +7,14 @@ import { Achievement } from 'src/app/achievement';
   styleUrls: ['./achievements.component.css']
 })
 export class AchievementsComponent implements OnInit {
-  @Input() achievement:Achievement[] = [];
-  @Input() isDisplay:boolean = false;
+  @Input() achievements!:Achievement[];
+  @Input() isDisplay!:boolean;
+  @Output() displayEvent = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  setDisplay() {
+    this.displayEvent.emit(!this.isDisplay)
+  }
 }

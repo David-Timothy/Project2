@@ -29,6 +29,10 @@ public class RequestService {
 //        return requestRepository.findById(id).get();
 //    }
 
+    public List<Request> findByCharIdIs(Long charId) {
+        return requestRepository.findByCharIdIs(charId);
+    }
+
 
     public Request requestRefund(int id) {
         Request requestDB = requestRepository.findById(id).get();
