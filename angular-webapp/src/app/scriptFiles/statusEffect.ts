@@ -37,10 +37,10 @@ var lowerAccuracy = function(affected: actor, level:number){
 }
 
 var raiseDefence = function(affected: actor, level:number){
-    affected.defence += level;
+    affected.defence += level*3;
 }
 
 var raiseAccuracy = function(affected: actor, level:number){
-    affected.accuracy += level;
+    affected.accuracy += level*3;
 }
 

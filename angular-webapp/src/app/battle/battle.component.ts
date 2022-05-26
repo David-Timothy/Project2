@@ -41,7 +41,7 @@ export class BattleComponent implements OnInit {
     alert("Defated "+monster.name);
     this.inBattle = false;
     this.playerService.changeCoins(this.difficulty);
-    this.playerService.earnAchievment("Victory", "Win a asingle battle");
+    this.playerService.earnAchievment("Victory!", "Win a single battle");
     this.selectMonster();
   }
 
