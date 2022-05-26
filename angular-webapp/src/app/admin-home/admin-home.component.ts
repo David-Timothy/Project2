@@ -10,18 +10,17 @@ import { Character } from '../entity/character';
 })
 export class AdminHomeComponent implements OnInit {
 
-  character!:Character[];
+  characters!:Character[];
   constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
     this.getAllCharacter();
-
   }
 
   getAllCharacter() {
-    this.adminService.getAllCharacter().subscribe(
-      (char:)
-    )
+    // this.adminService.getAllCharacter().subscribe(
+    //   (char:)
+    // )
   }
 
 }
