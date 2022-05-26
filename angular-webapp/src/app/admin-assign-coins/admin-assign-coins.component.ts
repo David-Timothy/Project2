@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../request';
 import { RequestService } from '../services/request.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-assign-coins',
@@ -10,7 +11,7 @@ import { RequestService } from '../services/request.service';
 export class AdminAssignCoinsComponent implements OnInit {
   pendingRequests!:Request[];
 
-  constructor(private requestService: RequestService) { }
+  constructor(private requestService: RequestService, private router:Router) { }
 
   ngOnInit(): void {
     this.getAllPendingRequests();
@@ -27,5 +28,9 @@ export class AdminAssignCoinsComponent implements OnInit {
       request => {
        alert(`Your succesfully assigned ${request.amount} coins to character with an ID of ${request.charId}`)
       })
+  }
+
+  backToHome(){
+    this.router.navigate(['/adminhome']);
   }
 }

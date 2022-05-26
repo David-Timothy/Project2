@@ -17,7 +17,6 @@ export class BuyCoinsComponent implements OnInit {
 
   ngOnInit(): void {
     this.charId = this.charService.getCharacter().id;
-    console.log(`Char ID = ${this.charId}`)
     this.request = {
       charId: this.charId,
       amount: 0,

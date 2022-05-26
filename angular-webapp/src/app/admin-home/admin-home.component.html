@@ -1,33 +1,36 @@
-<h1> View All Characters </h1>
+<div class="container">
+    <div class="first-row">
 
-<table>
-    <thead>
-        <th>id</th>
-        <th>acount_id</th>
-        <th>name</th>
-        <th>coins</th>
-        <th>created_at</th>
-    </thead>
+        <h1> View All Characters </h1>
 
-    <tbody>
-        <!-- for each book in our books array, we are mapping it to whatever html code that we write here -->
-        <!-- router link allow us to click which will redirecting it to specific book -->
-        <tr routerLink ="/character/{{char.id}}" class="character" *ngFor="let char of characters">
-            <td>{{char.id}}</td>
-            <td>{{char.account_id}}</td>
-            <td>{{char.name}}</td>
-            <td>{{char.coins}}</td>
-            <td>{{char.created_at}}</td>
-        </tr>
+        <div class="logout">
+            <button (click)="logout()">Logout</button>
+        </div>
 
-    </tbody>
-</table>
+    </div>
 
-<div class="logout">
-    <button (click)="logout()">Logout</button>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Account ID</th>
+            <th>Name</th>
+            <th>Coins</th>
+        </thead>
+
+        <tbody>
+            <!-- for each book in our books array, we are mapping it to whatever html code that we write here -->
+            <!-- router link allow us to click which will redirecting it to specific book -->
+            <tr routerLink ="/character/{{char.id}}" class="character" *ngFor="let char of characters">
+                <td>{{char.id}}</td>
+                <td>{{char.account_id}}</td>
+                <td>{{char.name}}</td>
+                <td>{{char.coins}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <br/>
+    <a routerLink="/assign-coins">Assign coins</a>
+    <br/>
+    <a routerLink="/handle-request">Refund Requests</a>
 </div>
-  
-<a routerLink="/assign-coins">assign coins</a>
-
-<br/>
-<a routerLink="/handle-request">handle request</a>

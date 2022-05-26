@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { Request } from '../request';
+import { Router } from '@angular/router';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AdminHandleRequestComponent implements OnInit {
   refundsRequested!:Request[];
 
-  constructor(private requestService: RequestService) { }
+  constructor(private requestService: RequestService, private router:Router) { }
 
   ngOnInit(): void {
     this.getAllRequestedRefunds();
@@ -34,5 +35,8 @@ export class AdminHandleRequestComponent implements OnInit {
     })
   }
 
+  backToHome(){
+    this.router.navigate(['/adminhome']);
+  }
 
 }

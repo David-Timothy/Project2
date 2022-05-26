@@ -1,6 +1,7 @@
 table,th,td{
     border: 1px solid;
     padding: 5px;
+    text-align: center;
 }
 
 /* pointer changes our mouse to something we can clkck  */
@@ -11,4 +12,16 @@ table,th,td{
 /* whenever we hover over the row */
 tr.hover {
     background: white;
+}
+
+.first-row {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+}
+
+div a {
+    text-decoration: none;
 }
