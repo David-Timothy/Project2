@@ -7,6 +7,7 @@ import com.revature.entity.Character;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/characters")
 public class CharacterController {

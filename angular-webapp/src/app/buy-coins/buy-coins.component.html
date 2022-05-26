@@ -1,0 +1,13 @@
+<div class="container">
+    <div>
+        <h1>Buy Coins</h1>
+        <div class = "compo">
+            <label for="amount">Amount:</label>
+            <input type = "number" id = "amount" [(ngModel)]="request.amount"/>
+            <button class = "btn btn-primary" type = "button" (click) = "buyCoins()">BUY</button>
+        </div>
+    </div>
+    <div >
+        <app-requests></app-requests>
+    </div>
+</div>

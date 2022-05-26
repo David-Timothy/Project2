@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    margin: 5px;
+    padding: 4px 8px;
+}
