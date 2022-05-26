@@ -38,10 +38,10 @@ public class AccountController {
     public List<Account> getAll(){return accountService.get_all_accounts();}
 
     @PostMapping("/login")
-    public String login(@RequestBody Account account){
+    public Account login(@RequestBody Account account){
         System.out.println(account.getUsername() + " " + account.getPassword());
-        accountService.authenticate(account);
-        return null;
+        return accountService.authenticate(account);
+        
     }
 }
 

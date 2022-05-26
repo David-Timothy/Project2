@@ -40,6 +40,7 @@ public class AccountService {
             System.out.println(dbAccounts.get(i).getUsername() + " " + dbAccounts.get(i).getPassword());
             if(dbAccounts.get(i).getUsername().equals(account.getUsername()) && dbAccounts.get(i).getPassword().equals(account.getPassword())){
                 System.out.println("Account is authenticated!");
+                account = dbAccounts.get(i);
                 return account;
             } else {
                 System.out.println("Account cannot be authenticated");
