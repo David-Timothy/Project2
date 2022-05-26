@@ -25,9 +25,14 @@ public class AccountController {
         return accountService.register(account);
     }
 
-    @RequestMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Account update_username(@RequestBody Account account, @PathVariable("id")Long id) {
         return accountService.update_username(account,id);
+    }
+
+    @PutMapping("/update-password/{id}")
+    public Account update_password(@RequestBody Account account, @PathVariable("id")Long id) {
+        return accountService.update_password(account,id);
     }
 
     @DeleteMapping("/delete/{id_to_delete}")

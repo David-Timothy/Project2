@@ -27,6 +27,13 @@ public class AccountService {
         return accountDB;
     }
 
+    public Account update_password(Account account, Long id){
+        Account accountDB = accountRepository.findById(id).get();
+        accountDB.setPassword(account.getPassword());
+        accountRepository.save(accountDB);
+        return accountDB;
+    }
+
     public List<Account> get_all_accounts() {return accountRepository.findAll();}
 
     public void delete_account(Long id) {accountRepository.deleteById(id);}
