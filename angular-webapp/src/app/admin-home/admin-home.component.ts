@@ -12,7 +12,7 @@ export class AdminHomeComponent implements OnInit {
 
   characters!:Character[];
   constructor(private adminService:AdminService,
-    public authenticationService:AuthenticationService) { }
+    public authenticationService:AuthenticationService,) { }
 
   ngOnInit(): void {
     this.getAllCharacter();
