@@ -3,6 +3,7 @@ import { Character } from '../character';
 import { player } from '../scriptFiles/actor';
 import { run } from '../scriptFiles/run';
 import { shopItem } from '../scriptFiles/shop';
+import { AchievmentService } from './achievment.service';
 import { CharactersService } from './characters.service';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class PlayerService {
   player:player;
   char!:Character;
 
-  constructor(private charactersService:CharactersService) { 
+  constructor(private charactersService:CharactersService, private achievmentService:AchievmentService) { 
     this.player = this.getPlayer();
   }
 
@@ -28,6 +29,8 @@ export class PlayerService {
       this.player.coins = character.coins.valueOf();
       this.player.progress = run.progress;
       this.char = character;
+      this.player.addSkill("Kick", "daze", 4, 1, false);
+      this.player.addSkill("Give up", "none", 1000, 0, true);
     }
     return this.player;
   }
@@ -40,6 +43,13 @@ export class PlayerService {
     this.player.setAccuracy(10);
     this.player.setDefence(10);
     this.player.statusEffects = [];
+
+    this.player.skills = [];
+    this.player.spells = [];
+    this.player.inventory = [];
+    this.player.addSkill("Kick", "daze", 4, 1, false);
+    this.player.addSkill("Give up", "none", 1000, 0, true);
+
   }
 
   changeCoins(change:number){
@@ -63,6 +73,10 @@ export class PlayerService {
     this.player.setEnergy(p.energy+energy);
     this.player.setAccuracy(p.accuracy+accuracy);
     this.player.setDefence(p.defence+defence);
+  }
+
+  earnAchievment(name:string, description:string) {
+    this.achievmentService.earnAchievment(name, description, Number(this.char.id));
   }
 }
 
