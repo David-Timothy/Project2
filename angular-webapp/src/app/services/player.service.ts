@@ -43,11 +43,13 @@ export class PlayerService {
     this.player.setAccuracy(10);
     this.player.setDefence(10);
     this.player.statusEffects = [];
+
     this.player.skills = [];
     this.player.spells = [];
     this.player.inventory = [];
     this.player.addSkill("Kick", "daze", 4, 1, false);
     this.player.addSkill("Give up", "none", 1000, 0, true);
+
   }
 
   changeCoins(change:number){

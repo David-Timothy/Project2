@@ -4,8 +4,10 @@ import com.revature.data.AccountRepository;
 import com.revature.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
+
 
 @Service
 public class AccountService {
@@ -38,7 +40,7 @@ public class AccountService {
             System.out.println(dbAccounts.get(i).getUsername() + " " + dbAccounts.get(i).getPassword());
             if(dbAccounts.get(i).getUsername().equals(account.getUsername()) && dbAccounts.get(i).getPassword().equals(account.getPassword())){
                 System.out.println("Account is authenticated!");
-                return account;
+                return dbAccounts.get(i);
             } else {
                 System.out.println("Account cannot be authenticated");
             }

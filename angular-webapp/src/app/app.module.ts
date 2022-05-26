@@ -21,6 +21,7 @@ import { AdminAssignCoinsComponent } from './admin-assign-coins/admin-assign-coi
 import { AdminHandleRequestComponent } from './admin-handle-request/admin-handle-request.component';
 import { RequestsComponent } from './requests/requests.component';
 import { BuyCoinsComponent } from './buy-coins/buy-coins.component';
+import { AdminManageComponent } from './admin-manage/admin-manage.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { BuyCoinsComponent } from './buy-coins/buy-coins.component';
     UpdateUsernamePasswordComponent,
     AdminLoginComponent,
     AdminHomeComponent,
+    AdminManageComponent,
     AdminAssignCoinsComponent,
     AdminHandleRequestComponent,
     RequestsComponent,

@@ -27,6 +27,11 @@ public class AdminController {
         return adminService.allCharacter();
     }
 
+    @GetMapping("/char/{id}")
+    public Character getCharacterById(@PathVariable("id") Long id) {
+        return adminService.getCharacterById(id);
+    }
+
     @DeleteMapping("/char/{id}")
     public void deleteCharacter(@PathVariable("id") Long id) {
         adminService.deleteCharacter(id);

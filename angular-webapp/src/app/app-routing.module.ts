@@ -14,6 +14,7 @@ import { AdminAssignCoinsComponent } from './admin-assign-coins/admin-assign-coi
 import { AdminHandleRequestComponent } from './admin-handle-request/admin-handle-request.component';
 import { BuyCoinsComponent } from './buy-coins/buy-coins.component';
 import { RequestsComponent } from './requests/requests.component';
+import { AdminManageComponent } from './admin-manage/admin-manage.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'admin', component: AdminLoginComponent},
   {path: 'adminhome', component:AdminHomeComponent},
+  {path: 'character/:id', component:AdminManageComponent},
   {path: 'buy', component: BuyCoinsComponent},
   {path: 'refund', component: RequestsComponent},
   {path: 'assign-coins', component: AdminAssignCoinsComponent},

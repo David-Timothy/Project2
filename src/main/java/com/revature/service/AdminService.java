@@ -25,6 +25,8 @@ public class AdminService {
         return adminCharacterRepository.allCharacter();
     }
 
+    public Character getCharacterById(Long id) {return adminCharacterRepository.findById(id).get();}
+
     public void deleteCharacter(Long id) {
         adminCharacterRepository.deleteById(id);
     }

@@ -1,0 +1,20 @@
+<h1>Manage account and character</h1>
+
+<!--Only render this div if the book object exists-->
+<div *ngIf="char">
+    <h2>Character Preview:</h2>
+    <p>ID: {{char.id}}</p>
+    <p>Account ID: {{char.account_id}}</p>
+    <p>Name: {{char.name}}</p>
+    <p>Coins: {{char.coins}}</p>
+    <p>Created: {{char.created_at}}</p>
+ 
+    <br/>
+    <button type="button" (click)="deleteCharacter()">Delete Character</button>
+
+    <br/>
+    <button type="button" (click)="deleteAccount()">Delete Account</button>
+
+    <br/>
+    <a routerLink="/adminhome">Return Home</a>
+</div>
