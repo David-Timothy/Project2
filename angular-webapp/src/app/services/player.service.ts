@@ -32,6 +32,16 @@ export class PlayerService {
     return this.player;
   }
 
+  reset() {
+    var initRun = new runImpl();
+    this.player.setHealth(initRun.healthmax);
+    this.player.setMana(initRun.manamax);
+    this.player.setEnergy(initRun.energymax);
+    this.player.setAccuracy(10);
+    this.player.setDefence(10);
+    this.player.statusEffects = [];
+  }
+
   changeCoins(change:number){
     this.char.coins = this.char.coins.valueOf()+change;
     this.getPlayer().coins = this.char.coins.valueOf();

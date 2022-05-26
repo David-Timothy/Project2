@@ -4,19 +4,20 @@ package com.revature.controller;
 import com.revature.entity.Account;
 import com.revature.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
 
 @RestController
-@CrossOrigin(origins="*")
+
 @RequestMapping("/account")
 public class AccountController {
 
     @Autowired
     AccountService accountService;
+
 
     @PostMapping("/register")
     public Account register(@RequestBody Account account){
@@ -24,7 +25,7 @@ public class AccountController {
         return accountService.register(account);
     }
 
-    @PutMapping("/update/{id}")
+    @RequestMapping("/update/{id}")
     public Account update_username(@RequestBody Account account, @PathVariable("id")Long id) {
         return accountService.update_username(account,id);
     }
@@ -37,11 +38,10 @@ public class AccountController {
     public List<Account> getAll(){return accountService.get_all_accounts();}
 
     @PostMapping("/login")
-
-    public Account login(@RequestBody Account account){
+    public String login(@RequestBody Account account){
         System.out.println(account.getUsername() + " " + account.getPassword());
-        return accountService.authenticate(account);
+        accountService.authenticate(account);
+        return null;
     }
 }
-
 

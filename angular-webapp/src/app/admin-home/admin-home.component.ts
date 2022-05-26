@@ -18,9 +18,9 @@ export class AdminHomeComponent implements OnInit {
   }
 
   getAllCharacter() {
-    // this.adminService.getAllCharacter().subscribe(
-    //   (char:)
-    // )
+    this.adminService.getAllCharacter().subscribe(
+      (char:Character[]) => {this.characters = char} 
+    )
   }
 
 }

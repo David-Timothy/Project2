@@ -5,6 +5,9 @@ import { SignInData } from '../model/signInData';
 import { AuthenticationService } from '../service/authentication/authentication.service';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Account } from '../entity/account';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,16 +32,16 @@ export class LoginComponent implements OnInit {
 //added bc
 
 userLogin(){
-    
-  // console.log(this.signinData);
-  this.dataService.loginuser(this.signinData).subscribe(data=>{
-    if(data){
-       this.authenticatedService.isAuthenticated = true;
-      this.router.navigate(['/home']);
+    // console.log(this.signinData);
+  this.dataService.loginuser(this.signinData).subscribe((account:Account)=>{
+    if(account.id != null){
+      sessionStorage.setItem('id', <string> <unknown> account.id);
+      this.authenticatedService.isAuthenticated = true;
+      this.router.navigate(['/characters']);
       alert("Login Successfully!");
     } else {
       this.areCredentialsValid = true
-  // alert("Please enter correct username and password");
+  alert("Please enter correct username and password");
     }
     // console.log(data);
     
@@ -46,7 +49,6 @@ userLogin(){
   
   )
 }
-
 ////
 
 

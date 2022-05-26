@@ -12,7 +12,7 @@
     <tbody>
         <!-- for each book in our books array, we are mapping it to whatever html code that we write here -->
         <!-- router link allow us to click which will redirecting it to specific book -->
-        <tr class="character" *ngFor="let char of characters">
+        <tr routerLink ="/character/{{char.id}}" class="character" *ngFor="let char of characters">
             <td>{{char.id}}</td>
             <td>{{char.account_id}}</td>
             <td>{{char.name}}</td>

@@ -44,6 +44,7 @@ return password === this.mockedUser.password;
 
   logout() {
     this.isAuthenticated = false;
+    sessionStorage.clear();
     this.router.navigate(['']);
   }
 }
