@@ -41,6 +41,7 @@ public class AccountController {
     public Account login(@RequestBody Account account){
         System.out.println(account.getUsername() + " " + account.getPassword());
         return accountService.authenticate(account);
+
     }
 }
 
