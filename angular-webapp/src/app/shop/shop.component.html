@@ -1,7 +1,9 @@
 
         <h1>Store</h1>
+        <div class="coins">
         <h2>Coins : {{getCoins()}}</h2>
-        <button (click)="toBuy()">Buy Coins</button>
+        <button class="buy" (click)="toBuy()">Buy Coins</button>
+        </div>
         <div class="row {{item.storedAction.source}}" *ngFor="let item of items">
             <div class="col-sm-6">{{item.storedAction.name}}</div>
             <div class="col-sm-2">{{item.totalCost()}}</div>

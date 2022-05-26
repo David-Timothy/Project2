@@ -17,3 +17,20 @@
 input {
     background-color: #FF8;
 }
+
+.coins {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buy {
+    color: black;
+    background-color: #f5ce42;
+    text-transform: uppercase;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 5px 20px;
+    font-weight: 600;
+}
