@@ -1,0 +1,19 @@
+.mana {
+    background-color: #59F;
+}
+
+.energy {
+    background-color : #ffc744;
+}
+
+.item {
+    background-color: #AA4;
+}
+
+.health {
+    background-color: #F66;
+}
+
+input {
+    background-color: #FF8;
+}

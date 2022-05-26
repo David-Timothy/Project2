@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
 userLogin(){
     // console.log(this.signinData);
   this.dataService.loginuser(this.signinData).subscribe((account:Account)=>{
-    if(account.id != null){
+    console.log(account)
+    if(account.id !== null){
       sessionStorage.setItem('id', <string> <unknown> account.id);
       this.authenticatedService.isAuthenticated = true;
       this.router.navigate(['/characters']);

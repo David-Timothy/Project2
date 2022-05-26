@@ -1,0 +1,24 @@
+{
+    "spells":[
+        {"name":"Fireball","effect":"burn","sides":"8","cost":"2","coinCost":"2","selfTargeted":false},
+        {"name":"Freeze","effect":"slow","sides":"8","cost":"2","coinCost":"2","selfTargeted":false},
+        {"name":"Confuse","effect":"daze","sides":"0","cost":"1","coinCost":"1","selfTargeted":false},
+        {"name":"Curse","effect":"poison","sides":"0","cost":"1","coinCost":"1","selfTargeted":false},
+        {"name":"Regenerate","effect":"heal","sides":"-6","cost":"2","coinCost":"2","selfTargeted":true},
+        {"name":"Magic Sheild","effect":"boost-defence","sides":"0","cost":"2","coinCost":"1","selfTargeted":true}
+    ],
+    "skills":[
+        {"name":"Evade","effect":"boost-defence","sides":"0","cost":"2","coinCost":"1","selfTargeted":true},
+        {"name":"Focus","effect":"boost-accuracy","sides":"0","cost":"2","coinCost":"1","selfTargeted":true},
+        {"name":"Empower","effect":"boost","sides":"0","cost":"2","coinCost":"2","selfTargeted":true},
+        {"name":"recover","effect":"heal","sides":"-8","cost":"1","coinCost":"1","selfTargeted":true},
+        {"name":"Smash","effect":"daze","sides":"8","cost":"1","coinCost":"2","selfTargeted":false}
+    ],
+    "items":[
+        {"name":"Sword","effect":"none","sides":"6","stock":"-1","coinCost":"5","selfTargeted":false},
+        {"name":"Bomb","effect":"daze","sides":"12","stock":"0","coinCost":"1","selfTargeted":false},
+        {"name":"Healing Potion","effect":"heal","sides":"-10","stock":"0","coinCost":"1","selfTargeted":true},
+        {"name":"Poison","effect":"poison","sides":"0","stock":"0","coinCost":"1","selfTargeted":false},
+        {"name":"Sheild","effect":"boost-defence","sides":"0","stock":"-1","coinCost":"5","selfTargeted":true}
+    ]
+}
