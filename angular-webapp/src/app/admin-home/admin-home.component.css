@@ -1,0 +1,14 @@
+table,th,td{
+    border: 1px solid;
+    padding: 5px;
+}
+
+/* pointer changes our mouse to something we can clkck  */
+.character {
+    cursor:pointer;
+}
+
+/* whenever we hover over the row */
+tr.hover {
+    background: white;
+}
