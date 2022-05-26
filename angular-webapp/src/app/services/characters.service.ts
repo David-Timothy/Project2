@@ -14,10 +14,12 @@ export class CharactersService {
   }
 
   setCharacter(selected:Character){
+    console.log("Settign Character");
     this.currentChar = selected;
   }
 
   getCharacter() {
+    console.log("Getting Character");
     return this.currentChar;
   }
 

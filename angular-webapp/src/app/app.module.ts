@@ -49,7 +49,7 @@ import { BuyCoinsComponent } from './buy-coins/buy-coins.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent, /*ShopComponent,*/ BattleComponent]
+  bootstrap: [AppComponent, /*ShopComponent, BattleComponent*/]
 })
 
 export class AppModule { }
