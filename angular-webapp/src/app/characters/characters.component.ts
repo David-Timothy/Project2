@@ -53,6 +53,7 @@ export class CharactersComponent implements OnInit {
   addCharacter() {
     this.charactersService.addCharacter(this.character).subscribe(character => {
       console.log(character.id)
+      this.character.name = ""
       this.getAllCharacters();
     })
   }
