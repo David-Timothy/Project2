@@ -41,6 +41,7 @@ export class BattleComponent implements OnInit {
     alert("Defated "+monster.name);
     this.inBattle = false;
     this.playerService.changeCoins(this.difficulty);
+    this.playerService.earnAchievment("Victory", "Win a asingle battle");
     this.selectMonster();
   }
 
@@ -78,9 +79,9 @@ export class BattleComponent implements OnInit {
 
   playerTurn(action:playerAction){
     this.player.turn();
-    if(action.selfTargeted)
+    if(action.selfTargeted) {
       alert(action.preform(this.player));
-    else
+    } else
       if(willHit(this.player, this.monster))
         alert(action.preform(this.monster));
       else

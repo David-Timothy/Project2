@@ -21,6 +21,10 @@ public class AchievementController {
     }
     @PostMapping("")
     public Achievement addAchievement(@RequestBody Achievement achievement) {
+        for(Achievement a : achievementService.getAllAchievementByCharId(achievement.getChar_id())) {
+            if(a.getName().equals( achievement.getName() ))
+                return null;
+        }
         return achievementService.addAchievement(achievement);
     }
 }

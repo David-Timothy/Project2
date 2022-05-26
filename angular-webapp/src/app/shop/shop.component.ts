@@ -21,11 +21,11 @@ export class ShopComponent extends shop implements OnInit{
     var abilities = JSON.parse(JSON.stringify(getAbilities));
 
     for(const skill of abilities.skills) {
-      this.addSpell(skill.name, skill.effect, skill.sides, skill.cost, skill.coinCost, skill.selfTargeted);
+      this.addSkill(skill.name, skill.effect, skill.sides, skill.cost, skill.coinCost, skill.selfTargeted);
     }
 
     for(const spell of abilities.spells) {
-      this.addSkill(spell.name, spell.effect, spell.sides, spell.cost, spell.coinCost, spell.selfTargeted);
+      this.addSpell(spell.name, spell.effect, spell.sides, spell.cost, spell.coinCost, spell.selfTargeted);
     }
 
     for(const item of abilities.items) {
