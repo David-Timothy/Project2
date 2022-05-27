@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../request';
 import { RequestService } from '../services/request.service';
-import { CharactersService } from '../services/characters.service';
 
 @Component({
   selector: 'app-requests',
@@ -10,12 +9,10 @@ import { CharactersService } from '../services/characters.service';
 })
 export class RequestsComponent implements OnInit {
   requests!:Request[];
-  charId!: Number;
 
-  constructor(private requestService: RequestService, private charService:CharactersService) { }
+  constructor(private requestService: RequestService) { }
 
   ngOnInit(): void {
-    this.charId = this.charService.getCharacter().id;
     this.getAllPurchases();
   }
 
@@ -23,7 +20,8 @@ export class RequestsComponent implements OnInit {
 
   // const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.requestService.getAllPurchases(this.charId).subscribe((requests:Request[]) => {
+    const id = 1;
+    this.requestService.getAllPurchases(id).subscribe((requests:Request[]) => {
       this.requests = requests;
     })
   }
