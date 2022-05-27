@@ -1,9 +1,24 @@
 # (Project title)
 
 ## Project Description
+Full rogue-like game with User Login, Front-end and data storing to the AWS
+
+## Use Cases
+* User Login and Logout
+* Editing their info
+* Creating new in-game characters
+* Seeing their info and achievements
+* Options to buy coins and to ask for refund for their past purchase
+* Options to equip your character with weapons before the battle
+* Engage in a battle
+* Win achievements
 
 
-## Use Cases (Some of you have sent them to me. Just make sure they are up to date)
-
-
-## Technologies Used (A lot of these will be the same for the different projects)
+## Technologies Used
+Java  
+Spring Boot  
+Maven  
+AWS  
+AngularJS  
+HTML and CSS  
+Javascript  
