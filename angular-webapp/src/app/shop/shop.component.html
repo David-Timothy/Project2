@@ -5,7 +5,8 @@
         <button class="buy" (click)="toBuy()">Buy Coins</button>
         </div>
         <div class="row {{item.storedAction.source}}" *ngFor="let item of items">
-            <div class="col-sm-6">{{item.storedAction.name}}</div>
+            <div class="col-sm-3">{{item.storedAction.name}}</div>
+            <div class="col-sm-3">{{item.storedAction.effect}}</div>
             <div class="col-sm-2">{{item.totalCost()}}</div>
             <input type="number"
             [(ngModel)]="item.buying" class="col-sm-2" min="0">

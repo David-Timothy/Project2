@@ -138,7 +138,7 @@
             "abilities":[
                 {"name":"Poison","effect":"poison","sides":"6", "selfTargeted":false},
                 {"name":"Heal","effect":"heal","sides":"-6", "selfTargeted":true},
-                {"name":"Confuse","effect":"daze","sides":"-6", "selfTargeted":false},
+                {"name":"Confuse","effect":"daze","sides":"0", "selfTargeted":false},
                 {"name":"Fireball","effect":"burn","sides":"8", "selfTargeted":false},
                 {"name":"Freeze","effect":"slow","sides":"6", "selfTargeted":false}
             ],

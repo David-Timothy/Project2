@@ -22,14 +22,14 @@ export class CharactersComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCharacters()
     this.character = {
-      account_id: 1,
+      account_id: Number(sessionStorage.getItem('id')),
       name:""
     }
     console.log(1)
   }
 
   getAllCharacters() {
-    this.charactersService.getAllCharacters(1).subscribe((characters: Character[]) => {
+    this.charactersService.getAllCharacters(Number(sessionStorage.getItem('id'))).subscribe((characters: Character[]) => {
       this.characters = characters
       console.log(this.characters)
     })

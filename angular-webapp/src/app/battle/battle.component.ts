@@ -63,18 +63,21 @@ export class BattleComponent implements OnInit {
       else
         this.monsterTurn();
     }
+    if(this.monster.hp <= 0)
+        this.win();
   }
 
   monsterTurn(){
     this.monster.turn();
     var action = this.monster.abilities[die(this.monster.abilities.length)-1];
+    var description = this.monster.name+" uses "+action.name+"\n";
     if(action.selfTargeted){
-      alert(action.preform(this.monster));
+      alert(description+action.preform(this.monster));
     } else {
-      alert(action.preform(this.player));
-      if(this.player.hp <= 0)
-        this.lose();
+      alert(description+action.preform(this.player));
     }
+    if(this.player.hp <= 0)
+      this.lose();
   }
 
   playerTurn(action:playerAction){
@@ -91,5 +94,5 @@ export class BattleComponent implements OnInit {
 }
 
 function willHit(castor:actor, target:actor) {
-  return die(castor.accuracy) >= die(target.defence);
+  return die(castor.accuracy+3) >= die(target.defence);
 }
