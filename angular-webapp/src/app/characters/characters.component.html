@@ -19,7 +19,7 @@
             <h6 class="card-subtitle mb-2 text-muted">Coins: {{character.coins}}</h6>
             <div class="container button-wrapper">
               <button type="button" (click) = "setAchievement(i, $event)" class="btn btn-light btn-sm">Achievement</button>
-              <button type="button" (click)="deleteCharacter(character.id)" class="btn btn-outline-danger btn-sm">Delete</button>
+              <button type="button" (click)="deleteCharacter(character.id, $event)" class="btn btn-outline-danger btn-sm">Delete</button>
             </div>
           </div>
         </div>
