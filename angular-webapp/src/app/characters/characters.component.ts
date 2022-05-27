@@ -57,8 +57,9 @@ export class CharactersComponent implements OnInit {
       this.getAllCharacters();
     })
   }
-  deleteCharacter(id:Number) {
+  deleteCharacter(id:Number, e:Event) {
     console.log(id)
+    e.stopPropagation();
     this.charactersService.deleteCharacter(id).subscribe(() => {
       this.getAllCharacters();
     })
