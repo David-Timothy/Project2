@@ -1,0 +1,19 @@
+<h1>All your purchases</h1>
+
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Amount</th>
+        <th>Status</th>
+    </thead>
+
+    <tbody>
+        <tr class = "request" *ngFor="let request of requests">
+            <td>{{request.id}}</td>
+            <td>{{request.amount}}</td>
+            <td>{{request.status}}</td>
+            <button *ngIf="request.status == 'accepted'" class = "btn btn-primary" type = "button" (click) = "requestRefund(request)">Request Refund</button>
+        </tr>
+    </tbody>
+
+</table>

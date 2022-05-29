@@ -1,0 +1,33 @@
+
+        <h1>Store</h1>
+        <div class="coins">
+        <h2>Coins : {{getCoins()}}</h2>
+        <button class="buy" (click)="toBuy()">Buy Coins</button>
+        </div>
+        <div class="row {{item.storedAction.source}}" *ngFor="let item of items">
+            <div class="col-sm-3">{{item.storedAction.name}}</div>
+            <div class="col-sm-3">{{item.storedAction.effect}}</div>
+            <div class="col-sm-2">{{item.totalCost()}}</div>
+            <input type="number"
+            [(ngModel)]="item.buying" class="col-sm-2" min="0">
+        </div>
+        <div class="row">
+            <label class="col-sm-2 health" for="HP">HP Boost: </label>
+            <input class="col-sm-1" name="HP" type="number" [(ngModel)]="hpBoost" step="10" min="-90">
+            <span class="col-sm-9"></span>
+            <label class="col-sm-2 item" for="accuracy">Accuracy Boost: </label>
+            <input class="col-sm-1" name="accuracy" type="number" [(ngModel)]="accuracyBoost" min="-9">
+            <label class="col-sm-2 item" for="defence">Defence Boost: </label>
+            <input class="col-sm-1" name="defence" type="number" [(ngModel)]="defenceBoost" min="-9">
+            <label class="col-sm-2 mana" for="mana">Mana Boost: </label>
+            <input class="col-sm-1" name="mana" type="number" [(ngModel)]="manaBoost" min="-10">
+            <label class="col-sm-2 energy" for="energy">Energy Boost: </label>
+            <input class="col-sm-1" name="energy" type="number" [(ngModel)]="energyBoost" min="-10">
+        </div>
+        <h3>Total Cost : {{totalCost()}}</h3>
+        <button (click)="purchaseItems()">Start</button>
+
+        <div class="logout">
+            <button (click)="logout()">Logout</button>
+        </div>
+          

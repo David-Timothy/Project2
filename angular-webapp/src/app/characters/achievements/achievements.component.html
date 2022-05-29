@@ -1,0 +1,12 @@
+<div class="background" [ngStyle]="{'display': isDisplay ? 'block' : 'none'}" (click)="setDisplay()">
+  <div id="container" >
+    <div class="container wrapper">
+      <div *ngFor="let achievement of achievements">
+        {{achievement.name}}: {{achievement.description}}
+      </div>
+      <div *ngIf="achievements === undefined || achievements.length === 0">
+        No achievement can be displayed.
+      </div>
+    </div>
+  </div>
+</div>
