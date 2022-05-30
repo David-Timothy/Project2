@@ -3,7 +3,6 @@ package com.revature.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -14,7 +13,6 @@ import javax.persistence.Column;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Data
 @Entity
 public class Character {
@@ -31,13 +29,13 @@ public class Character {
     @OneToMany(mappedBy = "char_id")
     private List<Achievement> achievements;
 
-
-//    public Character(Long account_id, String name, int coins, Timestamp created_at) {
+//    public Character(Long id, Long account_id, String name, int coins) {
+//        this.id = id;
 //        this.account_id = account_id;
 //        this.name = name;
 //        this.coins = coins;
-//        this.created_at = created_at;
 //    }
+
     public Character(Long account_id, String name, int coins) {
         this.account_id = account_id;
         this.name = name;
