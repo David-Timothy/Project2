@@ -12,8 +12,7 @@ public class CharacterService {
     CharacterRepository characterRepository;
 
     public Character addCharacter(Character character) {
-        characterRepository.save(character);
-        return character;
+        return characterRepository.save(character);
     }
     public List<Character> getAllCharacterByAccountId(Long account_id) {
         return characterRepository.getAllCharactersByAccountId(account_id);
