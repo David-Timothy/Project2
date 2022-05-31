@@ -23,7 +23,8 @@ Full rogue-like game to fight various monsters. Accumulate coins for each run to
 Java  
 Spring Boot  
 Maven  
-AWS  
+AWS RDS
 AngularJS  
 HTML and CSS  
 Javascript  
+Bootstrap
