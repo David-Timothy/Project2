@@ -1,4 +1,4 @@
-# Rogue-like Advanture Game
+# Rogue-like Adventure Game
 
 ## Project Description
 Full rogue-like game to fight various monsters. Accumulate coins for each run to purchase spells, items, and skills. Achievements can be unlocked by meeting specific conditions. Also, implemented purchasing coins for faster progression.
