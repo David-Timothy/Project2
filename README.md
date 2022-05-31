@@ -1,17 +1,22 @@
-# (Project title)
+# Rogue-like Advanture Game
 
 ## Project Description
-Full rogue-like game with User Login, Front-end and data storing to the AWS
+Full rogue-like game to fight various monsters. Accumulate coins for each run to purchase spells, items, and skills. Achievements can be unlocked by meeting specific conditions. Also, implemented purchasing coins for faster progression.
 
 ## Use Cases
-* User Login and Logout
-* Editing their info
-* Creating new in-game characters
-* Seeing their info and achievements
-* Options to buy coins and to ask for refund for their past purchase
-* Options to equip your character with weapons before the battle
-* Engage in a battle
-* Win achievements
+* User can login and logout.
+* User can update username and/or password.
+* User can create new characters.
+* User can see info and achievements.
+* User may buy coins and to ask for refund for their past purchase.
+* User may equip own character with weapons before the battle.
+* User can participate in a battle.
+
+* Admin can login and logout.
+* Admin can delete character.
+* Admin can delete user and associated characters with the user.
+* Admin can set coin for a character.
+* Admin can approve or reject a refund. 
 
 
 ## Technologies Used
