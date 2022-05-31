@@ -28,3 +28,10 @@ AngularJS
 HTML and CSS  
 Javascript  
 Bootstrap
+## Contributors
+Ben Castilla  
+Dae Hyun Kim  
+David Timothy  
+Goran Markovic  
+Rich Chan  
+
