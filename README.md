@@ -3,6 +3,13 @@
 ## Project Description
 Full rogue-like game to fight various monsters. Accumulate coins for each run to purchase spells, items, and skills. Achievements can be unlocked by meeting specific conditions. Also, implemented purchasing coins for faster progression.
 
+## Getting Started
+- clone this repository on your local machine using ‘git clone’
+- connect to your database by changing resources/application.properties
+- run the main method inside the src/main/java/com.revature/Project2Application.java
+- in the terminal, change directory to the angular-webapp, run ‘npm install’ to install all the packages needed
+- and then run ’ng serve —open’ to open the app in your browser
+
 ## Use Cases
 * User can login and logout.
 * User can update username and/or password.
